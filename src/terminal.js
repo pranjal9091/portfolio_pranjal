@@ -1,4 +1,6 @@
+import confetti from 'canvas-confetti';
 import { sound } from './audio.js';
+import { PRANJAL_ASCII_PORTRAIT } from './asciiPortrait.js';
 
 // Music Easter Egg Configuration (Blinding Lights — The Weeknd)
 const YOUTUBE_TRACK_IDS = ['fHI8X4OXluQ', '4NRXx6U8ABQ'];
@@ -20,6 +22,11 @@ export class TerminalCLI {
     this.historyIndex = -1;
     this.isMatrixRunning = false;
 
+    // Cyberpunk Decryptor Mini-Game State
+    this.gameSecretCode = Math.floor(1000 + Math.random() * 9000).toString();
+    this.gameAttemptsLeft = 6;
+    this.isGameActive = false;
+
     // Music Easter Egg State (YouTube IFrame API)
     this.ytPlayer = null;
     this.ytCurrentTrackIndex = 0;
@@ -31,28 +38,61 @@ export class TerminalCLI {
     this.ytVizElement = null;
 
     this.commands = {
-      help: this.cmdHelp.bind(this),
-      about: this.cmdAbout.bind(this),
-      experience: this.cmdExperience.bind(this),
-      projects: this.cmdProjects.bind(this),
-      project: this.cmdProjectDetail.bind(this),
+      // Who / About aliases
+      who: this.cmdWho.bind(this),
+      w: this.cmdWho.bind(this),
+      about: this.cmdWho.bind(this),
+      whoami: this.cmdWho.bind(this),
+
+      // Skills aliases
       skills: this.cmdSkills.bind(this),
-      photo: this.cmdPhoto.bind(this),
-      contact: this.cmdContact.bind(this),
+      s: this.cmdSkills.bind(this),
+
+      // Projects aliases
+      projects: this.cmdProjects.bind(this),
+      pj: this.cmdProjects.bind(this),
+      project: this.cmdProjectDetail.bind(this),
+
+      // Experience aliases
+      experience: this.cmdExperience.bind(this),
+      exp: this.cmdExperience.bind(this),
+
+      // Interactive Terminal Game
+      games: this.cmdGames.bind(this),
+      g: this.cmdGames.bind(this),
+      guess: (args) => this.cmdGuess(args),
+
+      // Resume / CV
+      resume: (args) => this.cmdCv(args),
       cv: this.cmdCv.bind(this),
-      resume: (args) => this.cmdResume(args),
+
+      // Direct Contact Channels
+      contact: this.cmdContact.bind(this),
+      email: this.cmdEmail.bind(this),
+      mail: this.cmdEmail.bind(this),
+      linkedin: this.cmdLinkedIn.bind(this),
+      li: this.cmdLinkedIn.bind(this),
+      github: this.cmdGitHub.bind(this),
+      gh: this.cmdGitHub.bind(this),
+      phone: this.cmdPhone.bind(this),
+
+      // Music Easter Egg
       play: (args) => this.cmdPlay(args),
       pause: (args) => this.cmdPause(args),
       stop: (args) => this.cmdStop(args),
       vol: (args) => this.cmdVolume(args),
       now: (args) => this.cmdNow(args),
+
+      // System Utilities
       clear: this.cmdClear.bind(this),
+      cls: this.cmdClear.bind(this),
       matrix: this.cmdMatrix.bind(this),
       open: this.cmdOpen.bind(this),
-      whoami: () => ['visitor@quantum-gateway:~$ Identified as: Distinguished Engineer / Evaluator'],
       date: () => [new Date().toUTCString()],
       repo: () => ['GitHub: https://github.com/pranjal9091'],
       sudo: (args) => this.cmdSudo(args),
+      photo: this.cmdPhoto.bind(this),
+      help: this.cmdHelp.bind(this),
     };
 
     this.bindEvents();
@@ -99,6 +139,20 @@ export class TerminalCLI {
         if (cmd) this.execute(cmd);
       });
     });
+
+    // Click delegation on interactive bracketed commands inside terminal output
+    if (this.output) {
+      this.output.addEventListener('click', (e) => {
+        const target = e.target.closest('[data-cmd]');
+        if (target) {
+          const cmd = target.getAttribute('data-cmd');
+          if (cmd) {
+            sound.playKeyClick();
+            this.execute(cmd);
+          }
+        }
+      });
+    }
   }
 
   isInputFieldFocused() {
@@ -131,19 +185,42 @@ export class TerminalCLI {
   }
 
   printWelcome() {
-    const ascii = `
-  ██████╗ ██████╗  █████╗ ███╗   ██╗     ██╗ █████╗ ██╗     
-  ██╔══██╗██╔══██╗██╔══██╗████╗  ██║     ██║██╔══██╗██║     
-  ██████╔╝██████╔╝███████║██╔██╗ ██║     ██║███████║██║     
-  ██╔═══╝ ██╔══██╗██╔══██║██║╚██╗██║██   ██║██╔══██║██║     
-  ██║     ██║  ██║██║  ██║██║ ╚████║╚█████╔╝██║  ██║███████╗
-  ╚═╝     ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝ ╚════╝ ╚═╝  ╚═╝╚══════╝
-    `;
-    this.printLine(`<pre class="term-banner">${ascii}</pre>`);
-    this.printLine('<div class="term-dim">Pranjal Singh Quantum OS (zsh v5.9 x86_64-apple-darwin)</div>');
-    this.printLine('<div class="term-success">● System Status: All 6 Flagship Engines Online & Verified.</div>');
-    this.printLine('<div>Type <span class="term-highlight">help</span> to view available operations, or <span class="term-highlight">projects</span> for live links.</div>');
-    this.printLine('<div class="term-dim">------------------------------------------------------------------------</div>');
+    const banner = `
+.########..########.....###....##....##.....##....###....##.......
+.##.....##.##.....##...##.##...###...##.....##...##.##...##.......
+.##.....##.##.....##..##...##..####..##.....##..##...##..##.......
+.########..########..##.....##.##.##.##.....##.##.....##.##.......
+.##........##...##...#########.##..####.##..##.#########.##.......
+.##........##....##..##.....##.##...###.##..##.##.....##.##.......
+.##........##.....##.##.....##.##....##..####..##.....##.########.
+
+..######...####..######...##....##.##.....##
+.##....##...##..##....##...###...##.##.....##
+.##.........##..##.........####..##.##.....##
+..######....##..##...####..##.##.##.#########
+.......##...##..##....##...##..####.##.....##
+.##....##...##..##....##...##...###.##.....##
+..######...####..######....##....##.##.....##
+    `.trim();
+
+    this.printLine(`<pre class="term-banner" style="color: #34D399; font-size: 0.62rem; line-height: 1.15; margin-bottom: 0.85rem;">${banner}</pre>`);
+    this.printLine('<div>Welcome to my personal portfolio! (Version 2.4.0)</div>');
+    this.printLine('<div>Type <span class="term-highlight">\'help\'</span> to see the list of available commands.</div>');
+    this.printLine('<div style="margin: 0.65rem 0;"><span style="color: #FB7185; font-weight: 700;">NEW</span> try <span class="term-interactive-cmd" data-cmd="project helios">HELIOS</span> & <span class="term-interactive-cmd" data-cmd="project rhythmnet">RhythmNet</span></div>');
+    this.printLine('<div class="term-highlight" style="margin-top: 0.85rem; font-weight: 700;">Available Commands:</div>');
+    this.printLine('<div><span class="term-bracket-cmd" data-cmd="who">[who]</span> or <span class="term-bracket-cmd" data-cmd="w">[w]</span></div>');
+    this.printLine('<div><span class="term-bracket-cmd" data-cmd="skills">[skills]</span> or <span class="term-bracket-cmd" data-cmd="s">[s]</span></div>');
+    this.printLine('<div><span class="term-bracket-cmd" data-cmd="projects">[projects]</span> or <span class="term-bracket-cmd" data-cmd="pj">[pj]</span></div>');
+    this.printLine('<div><span class="term-bracket-cmd" data-cmd="experience">[experience]</span> or <span class="term-bracket-cmd" data-cmd="exp">[exp]</span></div>');
+    this.printLine('<div><span class="term-bracket-cmd" data-cmd="games">[games]</span> or <span class="term-bracket-cmd" data-cmd="g">[g]</span></div>');
+    this.printLine('<div><span class="term-bracket-cmd" data-cmd="resume">[resume]</span> or <span class="term-bracket-cmd" data-cmd="cv">[cv]</span></div>');
+    this.printLine('<div><span class="term-bracket-cmd" data-cmd="clear">[clear]</span></div>');
+    this.printLine('<div class="term-highlight" style="margin-top: 0.85rem; font-weight: 700;">Contact Me:</div>');
+    this.printLine('<div><span class="term-bracket-cmd" data-cmd="email">[email]</span></div>');
+    this.printLine('<div><span class="term-bracket-cmd" data-cmd="linkedin">[linkedin]</span></div>');
+    this.printLine('<div><span class="term-bracket-cmd" data-cmd="github">[github]</span></div>');
+    this.printLine('<div><span class="term-bracket-cmd" data-cmd="phone">[phone]</span></div>');
+    this.printLine('<div class="term-dim" style="margin-top: 0.65rem;">------------------------------------------------------------------------</div>');
   }
 
   handleInputKey(e) {
@@ -195,6 +272,36 @@ export class TerminalCLI {
     // Echo user input
     this.printLine(`<div><span class="terminal-prompt"><span class="user">pranjal</span><span class="at">@</span><span class="host">quantum</span>:<span class="path">~</span><span class="dollar">$</span></span> <span class="term-cmd-echo">${trimmed}</span></div>`);
 
+    const lower = trimmed.toLowerCase();
+
+    // Natural phrases handling
+    if (lower === 'who is pranjal' || lower === 'who is' || lower === 'whois' || lower === 'who is kuber') {
+      const result = this.cmdWho();
+      if (Array.isArray(result)) {
+        result.forEach((line) => this.printLine(line));
+      }
+      this.scrollToBottom();
+      return;
+    }
+
+    if (lower === 'sudo play') {
+      const result = this.cmdSudo(['play']);
+      if (Array.isArray(result)) {
+        result.forEach((line) => this.printLine(line));
+      }
+      this.scrollToBottom();
+      return;
+    }
+
+    if (lower === 'contact me') {
+      const result = this.cmdContact();
+      if (Array.isArray(result)) {
+        result.forEach((line) => this.printLine(line));
+      }
+      this.scrollToBottom();
+      return;
+    }
+
     const parts = trimmed.split(' ');
     const cmd = parts[0].toLowerCase();
     const args = parts.slice(1);
@@ -205,7 +312,7 @@ export class TerminalCLI {
         result.forEach((line) => this.printLine(line));
       }
     } else {
-      this.printLine(`<div class="term-error">zsh: command not found: ${cmd}. Type <span class="term-highlight">help</span> for a list of commands.</div>`);
+      this.printLine(`<div class="term-error">zsh: command not found: ${cmd}. Type <span class="term-highlight">help</span> or <span class="term-bracket-cmd" data-cmd="who">[who]</span> for available commands.</div>`);
     }
 
     this.scrollToBottom();
@@ -229,26 +336,62 @@ export class TerminalCLI {
     sound.playHover();
     return [
       '<div class="term-highlight">AVAILABLE COMMANDS:</div>',
-      '  <span class="term-success">about</span>       - Read engineering background, mindset & academic stats',
-      '  <span class="term-success">projects</span>    - List all 6 verified flagship projects with live links',
-      '  <span class="term-success">project &lt;id&gt;</span> - Deep architecture spec (e.g. "project helios", "project rhythmnet")',
-      '  <span class="term-success">experience</span>  - Work experience (Stealthera Innovations, Arovia Healthtech Startup)',
-      '  <span class="term-success">skills</span>      - Categorized engineering competencies & frameworks',
-      '  <span class="term-success">photo</span>       - Render Pranjal Singh profile photograph in terminal',
-      '  <span class="term-success">contact</span>     - View direct email, phone, GitHub and LinkedIn links',
-      '  <span class="term-success">cv</span>          - Open / download curriculum vitae (PDF)',
-      '  <span class="term-success">open &lt;id&gt;</span>    - Launch project in new tab (e.g. "open helios", "open airstrings")',
-      '  <span class="term-success">matrix</span>      - Trigger digital rain visual simulation',
-      '  <span class="term-success">clear</span>       - Clear current terminal screen buffer',
+      '  <span class="term-success">[who] or [w]</span>        - Bio with ASCII Matrix portrait (or "who is pranjal")',
+      '  <span class="term-success">[skills] or [s]</span>     - Categorized engineering competencies & stack',
+      '  <span class="term-success">[projects] or [pj]</span>   - 6 flagship production & research architectures',
+      '  <span class="term-success">project &lt;id&gt;</span>        - Architecture deep dive (e.g. "project helios")',
+      '  <span class="term-success">[experience] or [exp]</span> - Stealthera Innovations & Arovia Startup timeline',
+      '  <span class="term-success">[games] or [g]</span>      - Playable Cyberpunk Quantum Decryptor mini-game',
+      '  <span class="term-success">[resume] or [cv]</span>     - Open / download curriculum vitae (PDF)',
+      '  <span class="term-success">[email]</span>             - Copy email & trigger client',
+      '  <span class="term-success">[linkedin]</span>          - Launch LinkedIn profile in new tab',
+      '  <span class="term-success">[github]</span>            - Launch GitHub profile in new tab',
+      '  <span class="term-success">[phone]</span>             - Copy telephone contact to clipboard',
+      '  <span class="term-success">clear</span>              - Clear terminal screen buffer',
       '',
       '<div class="term-highlight">🎵 MUSIC PLAYER (EASTER EGG):</div>',
-      '  <span class="term-success">play</span>        - Start "Blinding Lights" — The Weeknd',
-      '  <span class="term-success">pause</span>       - Pause music playback',
-      '  <span class="term-success">resume</span>      - Continue playback',
-      '  <span class="term-success">stop</span>        - Stop music and reset to 0:00',
-      '  <span class="term-success">vol &lt;0-100&gt;</span> - Set volume level (e.g. "vol 80")',
-      '  <span class="term-success">now</span>         - Show track, artist, elapsed / total duration',
-      '  <span class="term-success">sudo play</span>   - Superuser playback override 😎',
+      '  <span class="term-success">play</span>               - Start "Blinding Lights" — The Weeknd',
+      '  <span class="term-success">pause</span>              - Pause music playback',
+      '  <span class="term-success">resume</span>             - Continue playback',
+      '  <span class="term-success">stop</span>               - Stop music and reset to 0:00',
+      '  <span class="term-success">vol &lt;0-100&gt;</span>        - Set volume level (e.g. "vol 80")',
+      '  <span class="term-success">now</span>                - Show track, artist, elapsed / total duration',
+      '  <span class="term-success">sudo play</span>          - Superuser playback override 😎',
+    ];
+  }
+
+  cmdWho() {
+    sound.playHover();
+    const asciiHtml = `<div class="term-matrix-ascii">${PRANJAL_ASCII_PORTRAIT}</div>`;
+    const bioHtml = `
+      <div class="term-bio-col">
+        <p class="term-bio-p">
+          Hi! I'm <strong>Pranjal Singh</strong> (<strong>@pranjal9091</strong>), an AI & Systems Engineer from <strong>IIIT Ranchi</strong>.
+        </p>
+        <p class="term-bio-p">
+          Chances are, you've come here after seeing one of my projects. Most of them start as an obsessive engineering deep-dive and turn into high-performance systems — run <span class="term-interactive-cmd" data-cmd="projects">projects</span> to inspect my favorite architectures.
+        </p>
+        <p class="term-bio-p">
+          I'm studying Electronics & Communication Engineering at <strong class="term-highlight">IIIT Ranchi</strong> (CGPA: <strong>8.27</strong>).
+          Currently, I'm an AI Engineer Intern at <strong class="term-highlight">Stealthera Innovations</strong>, building production speech recognition & real-time voice intelligence pipelines with Faster-Whisper.
+        </p>
+        <p class="term-bio-p">
+          In my first year, I founded <strong class="term-highlight">Arovia</strong>, architecting 24/7 continuous wearable biometric monitoring and doctor-grade preventative cardiac anomaly detection.
+        </p>
+        <p class="term-bio-p">
+          Alongside voice and clinical ML, I engineer local-first natural language CLI layers in Rust (<span class="term-interactive-cmd" data-cmd="project shellmind">ShellMind</span>), zero-server browser streaming (<span class="term-interactive-cmd" data-cmd="project p2pdrop">P2P Drop</span>), and non-parallelizable cryptographic timelock vaults (<span class="term-interactive-cmd" data-cmd="project chronolock">Chronolock</span>).
+        </p>
+        <p class="term-bio-p">
+          <strong>Quick stats:</strong> SIH National Qualifier, 200+ DSA problems solved, CodeChef Peak <strong>1553</strong>. At my core, I love building low-latency, zero-cloud-leakage systems that feel like magic.
+        </p>
+      </div>
+    `;
+
+    return [
+      `<div class="term-card">
+        <div class="term-portrait-col">${asciiHtml}</div>
+        ${bioHtml}
+      </div>`
     ];
   }
 
@@ -418,6 +561,144 @@ export class TerminalCLI {
     sound.playChime();
     window.open('/resume.pdf', '_blank');
     return ['[INITIATED] Opening curriculum vitae in external tab...'];
+  }
+
+  cmdGames() {
+    sound.playShockwave();
+    this.gameSecretCode = Math.floor(1000 + Math.random() * 9000).toString();
+    this.gameAttemptsLeft = 6;
+    this.isGameActive = true;
+    return [
+      '<div class="term-highlight">// CYBERPUNK 2077 // QUANTUM CIPHER DECRYPTOR</div>',
+      '<div class="term-dim">Mission: A 4-digit cryptographic lock is sealing the root mainframe.</div>',
+      'Rules: Type <span class="term-highlight">guess &lt;4-digit-code&gt;</span> (e.g. <span class="term-interactive-cmd" data-cmd="guess 4729">guess 4729</span>).',
+      'Feedback: <span class="term-success">● Exact match</span> (correct digit & position) | <span style="color:#FBBF24;">▲ Partial</span> (correct digit, wrong position).',
+      `You have <span class="term-highlight">${this.gameAttemptsLeft}</span> decryption attempts remaining.`,
+      '<div class="term-success">[SECURITY SYSTEM ACTIVE] Enter your first guess:</div>'
+    ];
+  }
+
+  cmdGuess(args) {
+    if (!this.isGameActive) {
+      return [
+        '<div class="term-error">No active decryption session.</div>',
+        'Type <span class="term-bracket-cmd" data-cmd="games">[games]</span> or <span class="term-bracket-cmd" data-cmd="g">[g]</span> to initialize a new cipher lock.'
+      ];
+    }
+    if (!args || args.length === 0 || !/^\d{4}$/.test(args[0])) {
+      sound.playKeyClick();
+      return ['<div class="term-error">Invalid input. Usage: guess &lt;4-digit-number&gt; (e.g. "guess 5821")</div>'];
+    }
+
+    const guess = args[0];
+    const secret = this.gameSecretCode;
+
+    if (guess === secret) {
+      sound.playChime();
+      confetti({ particleCount: 100, spread: 80, origin: { y: 0.6 } });
+      this.isGameActive = false;
+      return [
+        `<div class="term-success" style="font-weight: 700; font-size: 1.05rem;">ACCESS GRANTED! ROOT MAINFRAME DECRYPTED. 🎉</div>`,
+        `<div class="term-highlight">Cipher [${secret}] cracked with ${this.gameAttemptsLeft} attempts remaining!</div>`,
+        '<div class="term-dim">You earned Level 99 Cyberpunk Clearance. Type <span class="term-bracket-cmd" data-cmd="games">[games]</span> to play again or <span class="term-bracket-cmd" data-cmd="play">[play]</span> to celebrate with music!</div>'
+      ];
+    }
+
+    this.gameAttemptsLeft--;
+    let exact = 0;
+    let partial = 0;
+    const secretArr = secret.split('');
+    const guessArr = guess.split('');
+    const usedSecret = [false, false, false, false];
+    const usedGuess = [false, false, false, false];
+
+    // Find exact matches
+    for (let i = 0; i < 4; i++) {
+      if (guessArr[i] === secretArr[i]) {
+        exact++;
+        usedSecret[i] = true;
+        usedGuess[i] = true;
+      }
+    }
+
+    // Find partial matches
+    for (let i = 0; i < 4; i++) {
+      if (!usedGuess[i]) {
+        for (let j = 0; j < 4; j++) {
+          if (!usedSecret[j] && guessArr[i] === secretArr[j]) {
+            partial++;
+            usedSecret[j] = true;
+            break;
+          }
+        }
+      }
+    }
+
+    const numGuess = parseInt(guess, 10);
+    const numSecret = parseInt(secret, 10);
+    const rangeHint = numGuess < numSecret ? 'Higher ↑' : 'Lower ↓';
+
+    if (this.gameAttemptsLeft <= 0) {
+      sound.playKeyClick();
+      this.isGameActive = false;
+      return [
+        `<div class="term-error">DECRYPTION FAILED! QUANTUM LOCKOUT INITIATED.</div>`,
+        `The secret cipher was: <span class="term-highlight">${secret}</span>`,
+        'Type <span class="term-bracket-cmd" data-cmd="games">[games]</span> to retry with a new code.'
+      ];
+    }
+
+    sound.playHover();
+    return [
+      `Attempt result for [${guess}]: <span class="term-success">${exact} Exact</span>, <span style="color:#FBBF24;">${partial} Partial</span> | Hint: <span class="term-highlight">${rangeHint}</span>`,
+      `Attempts left: <span class="term-highlight">${this.gameAttemptsLeft}</span>. Type <span class="term-interactive-cmd" data-cmd="guess ">guess &lt;code&gt;</span>`
+    ];
+  }
+
+  cmdEmail() {
+    sound.playChime();
+    confetti({ particleCount: 30, spread: 50, origin: { y: 0.7 } });
+    const email = 'pranjalsingh9091@gmail.com';
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(email).catch(() => {});
+    }
+    window.location.href = `mailto:${email}`;
+    return [
+      `<div class="term-success">✓ Copied to clipboard & opened mail client:</div>`,
+      `<a class="term-link" href="mailto:${email}">${email}</a>`
+    ];
+  }
+
+  cmdLinkedIn() {
+    sound.playChime();
+    const url = 'https://linkedin.com/in/pranjal-singh';
+    window.open(url, '_blank');
+    return [
+      `<div class="term-success">✓ Launching LinkedIn profile in new tab:</div>`,
+      `<a class="term-link" href="${url}" target="_blank">${url}</a>`
+    ];
+  }
+
+  cmdGitHub() {
+    sound.playChime();
+    const url = 'https://github.com/pranjal9091';
+    window.open(url, '_blank');
+    return [
+      `<div class="term-success">✓ Launching GitHub profile in new tab:</div>`,
+      `<a class="term-link" href="${url}" target="_blank">${url}</a>`
+    ];
+  }
+
+  cmdPhone() {
+    sound.playChime();
+    const phone = '+91-8171207094';
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(phone).catch(() => {});
+    }
+    return [
+      `<div class="term-success">✓ Telephone number copied to clipboard:</div>`,
+      `<span class="term-highlight">${phone}</span> (Pranjal Singh)`
+    ];
   }
 
   // --- MUSIC EASTER EGG IMPLEMENTATION ---

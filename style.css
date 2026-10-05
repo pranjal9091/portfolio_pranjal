@@ -1663,6 +1663,99 @@ body.cursor-hover .cursor-outline {
   display: block;
 }
 
+/* Kuber-Style Terminal Card Layout */
+.term-card {
+  display: flex;
+  gap: 1.75rem;
+  padding: 1.25rem;
+  background: rgba(10, 10, 14, 0.85);
+  border: 1px solid rgba(52, 211, 153, 0.3);
+  border-radius: 12px;
+  margin: 0.85rem 0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), inset 0 0 25px rgba(52, 211, 153, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  animation: termCardFade 0.3s var(--ease-smooth);
+}
+
+@keyframes termCardFade {
+  0% { opacity: 0; transform: translateY(8px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.term-portrait-col {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.term-matrix-ascii {
+  color: #34D399;
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  line-height: 1.1;
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 8px rgba(52, 211, 153, 0.6);
+  background: rgba(0, 0, 0, 0.7);
+  padding: 0.85rem 1rem;
+  border: 1px solid rgba(52, 211, 153, 0.25);
+  border-radius: 8px;
+  user-select: none;
+  white-space: pre;
+}
+
+.term-bio-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  font-size: 0.85rem;
+  line-height: 1.65;
+  color: #E2E8F0;
+}
+
+.term-bio-p {
+  margin: 0;
+}
+
+.term-interactive-cmd {
+  color: var(--text-mint);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 600;
+  transition: all var(--transition-fast);
+}
+
+.term-interactive-cmd:hover {
+  color: #FFFFFF;
+  text-shadow: 0 0 10px rgba(52, 211, 153, 0.8);
+}
+
+.term-bracket-cmd {
+  color: var(--text-mint);
+  cursor: pointer;
+  font-weight: 600;
+  transition: all var(--transition-fast);
+  padding: 0 2px;
+}
+
+.term-bracket-cmd:hover {
+  color: var(--text-accent);
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .term-card {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  .term-matrix-ascii {
+    font-size: 0.48rem;
+  }
+}
+
 /* ==========================================================================
    PROJECT DEEP-DIVE MODAL
    ========================================================================== */
