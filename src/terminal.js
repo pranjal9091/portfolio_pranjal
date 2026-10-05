@@ -22,10 +22,6 @@ export class TerminalCLI {
     this.historyIndex = -1;
     this.isMatrixRunning = false;
 
-    // Cyberpunk Decryptor Mini-Game State
-    this.gameSecretCode = Math.floor(1000 + Math.random() * 9000).toString();
-    this.gameAttemptsLeft = 6;
-    this.isGameActive = false;
 
     // Music Easter Egg State (YouTube IFrame API)
     this.ytPlayer = null;
@@ -57,10 +53,6 @@ export class TerminalCLI {
       experience: this.cmdExperience.bind(this),
       exp: this.cmdExperience.bind(this),
 
-      // Interactive Terminal Game
-      games: this.cmdGames.bind(this),
-      g: this.cmdGames.bind(this),
-      guess: (args) => this.cmdGuess(args),
 
       // Resume / CV
       resume: (args) => this.cmdCv(args),
@@ -212,7 +204,6 @@ export class TerminalCLI {
     this.printLine('<div><span class="term-bracket-cmd" data-cmd="skills">[skills]</span> or <span class="term-bracket-cmd" data-cmd="s">[s]</span></div>');
     this.printLine('<div><span class="term-bracket-cmd" data-cmd="projects">[projects]</span> or <span class="term-bracket-cmd" data-cmd="pj">[pj]</span></div>');
     this.printLine('<div><span class="term-bracket-cmd" data-cmd="experience">[experience]</span> or <span class="term-bracket-cmd" data-cmd="exp">[exp]</span></div>');
-    this.printLine('<div><span class="term-bracket-cmd" data-cmd="games">[games]</span> or <span class="term-bracket-cmd" data-cmd="g">[g]</span></div>');
     this.printLine('<div><span class="term-bracket-cmd" data-cmd="resume">[resume]</span> or <span class="term-bracket-cmd" data-cmd="cv">[cv]</span></div>');
     this.printLine('<div><span class="term-bracket-cmd" data-cmd="clear">[clear]</span></div>');
     this.printLine('<div class="term-highlight" style="margin-top: 0.85rem; font-weight: 700;">Contact Me:</div>');
@@ -341,7 +332,6 @@ export class TerminalCLI {
       '  <span class="term-success">[projects] or [pj]</span>   - 6 flagship production & research architectures',
       '  <span class="term-success">project &lt;id&gt;</span>        - Architecture deep dive (e.g. "project helios")',
       '  <span class="term-success">[experience] or [exp]</span> - Stealthera Innovations & Arovia Startup timeline',
-      '  <span class="term-success">[games] or [g]</span>      - Playable Cyberpunk Quantum Decryptor mini-game',
       '  <span class="term-success">[resume] or [cv]</span>     - Open / download curriculum vitae (PDF)',
       '  <span class="term-success">[email]</span>             - Copy email & trigger client',
       '  <span class="term-success">[linkedin]</span>          - Launch LinkedIn profile in new tab',
@@ -563,97 +553,6 @@ export class TerminalCLI {
     return ['[INITIATED] Opening curriculum vitae in external tab...'];
   }
 
-  cmdGames() {
-    sound.playShockwave();
-    this.gameSecretCode = Math.floor(1000 + Math.random() * 9000).toString();
-    this.gameAttemptsLeft = 6;
-    this.isGameActive = true;
-    return [
-      '<div class="term-highlight">// CYBERPUNK 2077 // QUANTUM CIPHER DECRYPTOR</div>',
-      '<div class="term-dim">Mission: A 4-digit cryptographic lock is sealing the root mainframe.</div>',
-      'Rules: Type <span class="term-highlight">guess &lt;4-digit-code&gt;</span> (e.g. <span class="term-interactive-cmd" data-cmd="guess 4729">guess 4729</span>).',
-      'Feedback: <span class="term-success">● Exact match</span> (correct digit & position) | <span style="color:#FBBF24;">▲ Partial</span> (correct digit, wrong position).',
-      `You have <span class="term-highlight">${this.gameAttemptsLeft}</span> decryption attempts remaining.`,
-      '<div class="term-success">[SECURITY SYSTEM ACTIVE] Enter your first guess:</div>'
-    ];
-  }
-
-  cmdGuess(args) {
-    if (!this.isGameActive) {
-      return [
-        '<div class="term-error">No active decryption session.</div>',
-        'Type <span class="term-bracket-cmd" data-cmd="games">[games]</span> or <span class="term-bracket-cmd" data-cmd="g">[g]</span> to initialize a new cipher lock.'
-      ];
-    }
-    if (!args || args.length === 0 || !/^\d{4}$/.test(args[0])) {
-      sound.playKeyClick();
-      return ['<div class="term-error">Invalid input. Usage: guess &lt;4-digit-number&gt; (e.g. "guess 5821")</div>'];
-    }
-
-    const guess = args[0];
-    const secret = this.gameSecretCode;
-
-    if (guess === secret) {
-      sound.playChime();
-      confetti({ particleCount: 100, spread: 80, origin: { y: 0.6 } });
-      this.isGameActive = false;
-      return [
-        `<div class="term-success" style="font-weight: 700; font-size: 1.05rem;">ACCESS GRANTED! ROOT MAINFRAME DECRYPTED. 🎉</div>`,
-        `<div class="term-highlight">Cipher [${secret}] cracked with ${this.gameAttemptsLeft} attempts remaining!</div>`,
-        '<div class="term-dim">You earned Level 99 Cyberpunk Clearance. Type <span class="term-bracket-cmd" data-cmd="games">[games]</span> to play again or <span class="term-bracket-cmd" data-cmd="play">[play]</span> to celebrate with music!</div>'
-      ];
-    }
-
-    this.gameAttemptsLeft--;
-    let exact = 0;
-    let partial = 0;
-    const secretArr = secret.split('');
-    const guessArr = guess.split('');
-    const usedSecret = [false, false, false, false];
-    const usedGuess = [false, false, false, false];
-
-    // Find exact matches
-    for (let i = 0; i < 4; i++) {
-      if (guessArr[i] === secretArr[i]) {
-        exact++;
-        usedSecret[i] = true;
-        usedGuess[i] = true;
-      }
-    }
-
-    // Find partial matches
-    for (let i = 0; i < 4; i++) {
-      if (!usedGuess[i]) {
-        for (let j = 0; j < 4; j++) {
-          if (!usedSecret[j] && guessArr[i] === secretArr[j]) {
-            partial++;
-            usedSecret[j] = true;
-            break;
-          }
-        }
-      }
-    }
-
-    const numGuess = parseInt(guess, 10);
-    const numSecret = parseInt(secret, 10);
-    const rangeHint = numGuess < numSecret ? 'Higher ↑' : 'Lower ↓';
-
-    if (this.gameAttemptsLeft <= 0) {
-      sound.playKeyClick();
-      this.isGameActive = false;
-      return [
-        `<div class="term-error">DECRYPTION FAILED! QUANTUM LOCKOUT INITIATED.</div>`,
-        `The secret cipher was: <span class="term-highlight">${secret}</span>`,
-        'Type <span class="term-bracket-cmd" data-cmd="games">[games]</span> to retry with a new code.'
-      ];
-    }
-
-    sound.playHover();
-    return [
-      `Attempt result for [${guess}]: <span class="term-success">${exact} Exact</span>, <span style="color:#FBBF24;">${partial} Partial</span> | Hint: <span class="term-highlight">${rangeHint}</span>`,
-      `Attempts left: <span class="term-highlight">${this.gameAttemptsLeft}</span>. Type <span class="term-interactive-cmd" data-cmd="guess ">guess &lt;code&gt;</span>`
-    ];
-  }
 
   cmdEmail() {
     sound.playChime();
