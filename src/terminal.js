@@ -549,7 +549,7 @@ export class TerminalCLI {
 
   cmdCv() {
     sound.playChime();
-    window.open('/resume.pdf', '_blank');
+    window.open('./resume.pdf', '_blank');
     return ['[INITIATED] Opening curriculum vitae in external tab...'];
   }
 
