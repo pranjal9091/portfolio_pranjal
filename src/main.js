@@ -176,24 +176,61 @@ class PortfolioApp {
     if (!voiceBtn || !audioEl) return;
 
     let isPlaying = false;
+    let hasInteracted = false;
 
-    voiceBtn.addEventListener('click', () => {
+    const startAudio = () => {
+      if (isPlaying) return;
+      audioEl.play().then(() => {
+        isPlaying = true;
+        voiceBtn.classList.add('playing');
+        this.showToast('🎙️ Voiceover: Playing (Click icon to Mute)');
+      }).catch(() => {
+        // Autoplay blocked by browser policy; attach first interaction listener
+        attachGestureTrigger();
+      });
+    };
+
+    const attachGestureTrigger = () => {
+      if (hasInteracted) return;
+      const handleFirstInteraction = () => {
+        if (!isPlaying && !hasInteracted) {
+          hasInteracted = true;
+          startAudio();
+        }
+        window.removeEventListener('click', handleFirstInteraction);
+        window.removeEventListener('keydown', handleFirstInteraction);
+        window.removeEventListener('scroll', handleFirstInteraction);
+        window.removeEventListener('touchstart', handleFirstInteraction);
+      };
+
+      window.addEventListener('click', handleFirstInteraction, { once: true });
+      window.addEventListener('keydown', handleFirstInteraction, { once: true });
+      window.addEventListener('scroll', handleFirstInteraction, { once: true });
+      window.addEventListener('touchstart', handleFirstInteraction, { once: true });
+    };
+
+    // Auto-start immediately when website opens
+    setTimeout(() => {
+      startAudio();
+    }, 400);
+
+    voiceBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
       sound.playChime();
       if (!isPlaying) {
         audioEl.play().then(() => {
           isPlaying = true;
           voiceBtn.classList.add('playing');
-          this.showToast('🎙️ AI Voice Intro: Playing');
+          this.showToast('🎙️ Voiceover: Playing');
         }).catch((err) => {
           console.error('Audio play error:', err);
-          this.showToast('Audio playback blocked by browser');
         });
       } else {
         audioEl.pause();
         audioEl.currentTime = 0;
         isPlaying = false;
         voiceBtn.classList.remove('playing');
-        this.showToast('⏸️ AI Voice Intro: Paused');
+        this.showToast('⏸️ Voiceover: Muted');
       }
     });
 
