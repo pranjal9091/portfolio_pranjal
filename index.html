@@ -1,1006 +1,1020 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="lenis">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pranjal Singh — Systems & AI Engineer | Portfolio</title>
-  <meta name="description" content="Portfolio of Pranjal Singh — Systems & AI Engineer, IIIT Ranchi. Building local-first AI, zero-server WebRTC streaming, clinical ECG arrhythmia intelligence, and cryptographic verifiable delay functions." />
-  <meta name="keywords" content="Pranjal Singh, IIIT Ranchi, AI Engineer, Systems Engineer, Whisper, WebRTC, Three.js, Rust, Python, Next.js" />
+  <title>Pranjal Singh | Systems & AI Engineer</title>
+  <meta name="description" content="Cinematic Personal Portfolio of Pranjal Singh — Systems & AI Engineer, IIIT Ranchi. Building local-first AI, speech intelligence, zero-server WebRTC streaming, and healthtech telemetry." />
+  <meta name="keywords" content="Pranjal Singh, IIIT Ranchi, AI Engineer, Systems Engineer, Whisper, Faster-Whisper, Stealthera Innovations, Arovia, WebRTC, Rust, Python" />
   
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' font-family='monospace' font-weight='bold' fill='%23E6A85C'>P</text></svg>" />
   
-  <!-- Premium Modern Typography -->
+  <!-- Premium Modern Typography (Geist-like Plus Jakarta Sans & Space Mono / JetBrains Mono) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="./style.css" />
 </head>
-<body class="theme-default">
+<body class="bg-midnight text-white selection-amber">
 
   <!-- Custom Magnetic Cursor -->
   <div id="cursor-dot" class="cursor-dot"></div>
   <div id="cursor-outline" class="cursor-outline"></div>
 
-  <!-- Background Ambient Glow & Grid -->
-  <div class="ambient-background">
-    <div class="glow-orb orb-1"></div>
-    <div class="glow-orb orb-2"></div>
-    <div class="grid-overlay"></div>
-    <div class="noise-overlay"></div>
+  <!-- Cosmic Ambient Mesh & Background -->
+  <div class="ambient-mesh">
+    <div class="mesh-orb orb-amber"></div>
+    <div class="mesh-orb orb-emerald"></div>
+    <div class="grid-subtle"></div>
+    <div class="noise-texture"></div>
   </div>
 
-  <!-- Main Navigation Bar -->
-  <header class="navbar" id="navbar">
-    <div class="nav-container">
-      <a href="#hero" class="nav-brand">
+  <!-- Floating Glass Navbar -->
+  <header class="floating-nav-wrapper" id="navbar">
+    <nav class="floating-nav glass">
+      <a href="#home" class="nav-brand" aria-label="Home">
         <span class="brand-monogram">PS</span>
-        <div class="brand-meta">
-          <span class="brand-name">PRANJAL SINGH</span>
-          <span class="brand-status"><span class="status-pulse"></span>AVAILABLE FOR SELECT ROLES</span>
-        </div>
+        <span class="brand-title">PRANJAL<span class="text-amber">.DEV</span></span>
       </a>
 
-      <nav class="nav-links">
-        <a href="#projects" class="nav-item"><span class="nav-num">01.</span> PROJECTS</a>
-        <a href="#experience" class="nav-item"><span class="nav-num">02.</span> EXPERIENCE</a>
-        <a href="#skills" class="nav-item"><span class="nav-num">03.</span> SKILLS</a>
-        <a href="#about" class="nav-item"><span class="nav-num">04.</span> ABOUT</a>
-        <a href="#contact" class="nav-item"><span class="nav-num">05.</span> CONTACT</a>
-      </nav>
+      <div class="nav-links">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#experience" class="nav-link">Experience</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#hackathons" class="nav-link">Hackathons</a>
+        <a href="#achievements" class="nav-link">Achievements</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#education" class="nav-link">Education</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </div>
 
-      <div class="nav-actions">
-        <!-- Interactive Terminal Trigger Button -->
-        <button id="terminal-trigger-btn" class="btn btn-terminal" title="Launch Interactive CLI Terminal (HotKey: `)">
-          <span class="terminal-btn-icon">$_</span>
-          <span class="terminal-btn-text">TERMINAL</span>
-          <kbd class="shortcut-key">`</kbd>
+      <div class="nav-ctas">
+        <!-- Floating Terminal Button -->
+        <button id="terminal-trigger-btn" class="nav-icon-btn glass" title="Launch Interactive CLI Terminal (HotKey: `)">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="4 17 10 11 4 5"></polyline>
+            <line x1="12" y1="19" x2="20" y2="19"></line>
+          </svg>
+          <span class="hidden md:inline text-xs font-mono">CLI</span>
         </button>
 
-        <!-- Sound FX Toggle Button -->
-        <button id="sound-toggle-btn" class="btn btn-icon" title="Toggle Mechanical Audio FX">
-          <svg id="sound-icon-on" class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <a href="./resume.pdf" target="_blank" rel="noopener noreferrer" class="btn-cv-pill">
+          <span>CV</span>
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M7 17L17 7M17 7H7M17 7V17"/>
+          </svg>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Application Body -->
+  <main class="main-wrapper">
+
+    <!-- ==================== 1. HERO SECTION ==================== -->
+    <section id="home" class="hero-section">
+      <!-- 3D Three.js Interactive Starfield & Kinetic Lattice -->
+      <div id="canvas-3d-container" class="hero-canvas-bg"></div>
+      
+      <div class="hero-content">
+        <!-- Live Status Chip -->
+        <div class="status-chip glass fade-up">
+          <span class="status-dot-pulse"></span>
+          <span class="status-chip-text">Available for Systems & AI Roles • Summer 2026</span>
+        </div>
+
+        <!-- Cinematic Title -->
+        <h1 class="hero-name-heading fade-up delay-1">
+          PRANJAL <span class="text-gradient">SINGH</span>
+        </h1>
+
+        <!-- Subtitle & Identity -->
+        <h2 class="hero-subtitle fade-up delay-2">
+          Systems & AI Engineer <span class="text-amber px-2">|</span> Deep Learning <span class="text-emerald px-2">•</span> Voice Intelligence
+        </h2>
+
+        <p class="hero-summary fade-up delay-3">
+          Electronics & Communication Engineering undergraduate at <strong>IIIT Ranchi</strong>. Building production speech recognition pipelines with Faster-Whisper at <strong>Stealthera Innovations</strong> and architecting continuous health telemetry at <strong>Arovia</strong>.
+        </p>
+
+        <!-- Primary Action CTAs -->
+        <div class="hero-action-buttons fade-up delay-4">
+          <a href="#projects" class="btn-primary-hero">
+            <span>View Projects</span>
+            <svg class="w-4 h-4 ml-1.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+          <a href="#contact" class="btn-secondary-hero glass">
+            <span>Contact Me</span>
+          </a>
+          <a href="./resume.pdf" target="_blank" rel="noopener noreferrer" class="btn-secondary-hero glass">
+            <span>Download CV</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Floating Voice Intro & Sound Toggle in Bottom Right -->
+      <div class="voice-toggle-widget" id="voice-widget">
+        <button id="voice-intro-btn" class="voice-intro-btn glass" aria-label="Toggle AI Voice Introduction & Sound">
+          <div class="voice-soundwave" id="voice-soundwave">
+            <span class="wave-bar bar-1"></span>
+            <span class="wave-bar bar-2"></span>
+            <span class="wave-bar bar-3"></span>
+            <span class="wave-bar bar-4"></span>
+          </div>
+          <svg id="voice-icon-speaker" class="w-5 h-5 text-amber" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
             <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
           </svg>
-          <svg id="sound-icon-off" class="icon-svg hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-            <line x1="23" y1="9" x2="17" y2="15"></line>
-            <line x1="17" y1="9" x2="23" y2="15"></line>
-          </svg>
+          <span class="voice-btn-label">Voice Intro</span>
         </button>
-
-        <!-- Resume Download Button -->
-        <a href="./resume.pdf" target="_blank" class="btn btn-primary btn-sm">
-          <span>RESUME</span>
-          <svg class="icon-arrow" viewBox="0 0 16 16" fill="currentColor">
-            <path d="M4.5 11.5L11.5 4.5M11.5 4.5H5.5M11.5 4.5V10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
-      </div>
-    </div>
-  </header>
-
-  <!-- Hero Section with 3D WebGL Canvas -->
-  <section id="hero" class="hero-section">
-    <!-- 3D Three.js Interactive Container -->
-    <div id="canvas-3d-container" class="canvas-3d-wrapper"></div>
-
-    <div class="hero-content">
-      <div class="hero-badge-row">
-        <div class="tech-pill-badge">
-          <span class="live-dot"></span>
-          <span>AI SYSTEMS & INFRASTRUCTURE</span>
-        </div>
-        <div class="tech-pill-badge muted">
-          <span>IIIT RANCHI (ECE '28)</span>
-        </div>
+        <audio id="hero-voice-audio" src="./voice-intro.mp3" preload="auto"></audio>
       </div>
 
-      <h1 class="hero-title">
-        Engineering at the intersection of <span class="gradient-text">Speech AI</span>, 
-        <span class="highlight-wireframe">Cryptography</span> & Distributed Compute.
-      </h1>
+      <!-- Down Arrow Indicator -->
+      <a href="#about" class="scroll-down-indicator" aria-label="Scroll to About section">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+        </svg>
+      </a>
+    </section>
 
-      <p class="hero-description">
-        Hi, I'm <strong class="text-white">Pranjal Singh</strong> — AI Engineer Intern at <strong class="text-white">Stealthera Innovations</strong> and Undergrad at <strong class="text-white">IIIT Ranchi</strong>. 
-        I architect local-first speech intelligence pipelines, zero-server WebRTC data channels, clinical cardiac ML engines, and time-lock verifiable delay functions.
-      </p>
-
-      <div class="hero-cta-group">
-        <a href="#projects" class="btn btn-primary btn-lg magnetic-target">
-          <span>EXPLORE FLAGSHIP WORK</span>
-          <svg class="icon-down" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v10.586l3.293-3.293a1 1 0 111.414 1.414l-5 5a1 1 0 01-1.414 0l-5-5a1 1 0 111.414-1.414L9 14.586V4a1 1 0 011-1z" clip-rule="evenodd"/>
-          </svg>
-        </a>
-
-        <button id="hero-terminal-btn" class="btn btn-secondary btn-lg magnetic-target">
-          <span class="icon-code">&gt;_</span>
-          <span>LAUNCH CLI SHELL</span>
-        </button>
-
-        <button id="copy-email-btn" class="btn btn-ghost btn-lg magnetic-target" data-email="pranjalsingh9091@gmail.com">
-          <svg class="icon-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-          </svg>
-          <span id="copy-email-text">COPY EMAIL</span>
-        </button>
-      </div>
-
-      <!-- Quick Metrics Counter Strip -->
-      <div class="hero-metrics-strip">
-        <div class="metric-card">
-          <span class="metric-value counter" data-target="6">6</span>
-          <span class="metric-label">Shipped Production Systems</span>
-        </div>
-        <div class="metric-divider"></div>
-        <div class="metric-card">
-          <span class="metric-value">&lt;1ms</span>
-          <span class="metric-label">Tier-1 Rust CLI Execution</span>
-        </div>
-        <div class="metric-divider"></div>
-        <div class="metric-card">
-          <span class="metric-value">100%</span>
-          <span class="metric-label">Local-First / Zero Cloud Call AI</span>
-        </div>
-        <div class="metric-divider"></div>
-        <div class="metric-card">
-          <span class="metric-value">8.27</span>
-          <span class="metric-label">CGPA @ IIIT Ranchi</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- 3D Canvas Interaction Hint -->
-    <div class="canvas-hint">
-      <span class="hint-ring"></span>
-      <span class="hint-text">DRAG TO ROTATE 3D MANIFOLD • CLICK TO DISTORT</span>
-    </div>
-  </section>
-
-  <!-- Projects Section -->
-  <section id="projects" class="section projects-section">
-    <div class="section-container">
+    <!-- ==================== 2. ABOUT SECTION ==================== -->
+    <section id="about" class="section-container">
       <div class="section-header">
-        <div class="section-tag">// 01. SELECTED WORKS</div>
-        <h2 class="section-title">Engineered for depth, speed, & mathematical rigor.</h2>
-        <p class="section-subtitle">
-          Six self-contained, architected systems spanning real-time voice, WebRTC transport, clinical biosignal AI, and non-parallelizable cryptography.
-        </p>
+        <span class="section-pill">01 // PHILOSOPHY & PROFILE</span>
+        <h2 class="section-title">Bridging Signal Intuition & High-Throughput AI</h2>
+        <p class="section-subtitle">Electronics and Communication Engineering undergrad at IIIT Ranchi, engineering low-latency systems and clinical deep learning.</p>
+      </div>
 
-        <!-- Project Category Filter Tabs -->
-        <div class="filter-tabs-wrapper">
-          <div class="filter-tabs" id="project-filters">
-            <button class="filter-btn active" data-filter="all">ALL ARCHITECTURES (6)</button>
-            <button class="filter-btn" data-filter="ai">AI & CLINICAL (2)</button>
-            <button class="filter-btn" data-filter="distributed">P2P & NETWORKING (2)</button>
-            <button class="filter-btn" data-filter="systems">SYSTEMS & RUST (2)</button>
+      <div class="about-bento-grid">
+        <!-- Photo & Monogram Card -->
+        <div class="bento-card bento-photo glass">
+          <div class="photo-wrapper">
+            <img src="./assets/pranjal.jpg" alt="Pranjal Singh" class="photo-img" loading="lazy" />
+            <div class="photo-badge glass">
+              <span class="badge-dot"></span>
+              <span>Pranjal Singh • IIIT Ranchi '28</span>
+            </div>
           </div>
         </div>
+
+        <!-- Narrative Bio Card -->
+        <div class="bento-card bento-bio glass">
+          <h3 class="bento-heading">About Me</h3>
+          <p class="bento-text">
+            I'm a pre-final year undergraduate in <strong>Electronics and Communication Engineering at IIIT Ranchi (CGPA: 8.27)</strong>. My engineering instinct stems from low-level signal physics — understanding Fourier transforms, sampling limits, and bandwidth constraints — and translating them into robust, high-performance software.
+          </p>
+          <p class="bento-text">
+            Currently, I am an <strong>AI Engineer Intern at Stealthera Innovations</strong>, where I optimize Faster-Whisper streaming speech intelligence pipelines, audio DSP preprocessing, and multi-model inference benchmarks.
+          </p>
+          <p class="bento-text">
+            In my first year, I founded <strong>Arovia</strong>, developing 24/7 continuous wearable sensor telemetry for preventative cardiac arrhythmia detection and doctor-grade reports.
+          </p>
+
+          <div class="bento-tags-row">
+            <span class="tag-pill">AI & Speech Recognition</span>
+            <span class="tag-pill">WebRTC DataChannels</span>
+            <span class="tag-pill">Rust Systems</span>
+            <span class="tag-pill">Biometric Telemetry</span>
+            <span class="tag-pill">Cryptographic VDFs</span>
+          </div>
+        </div>
+
+        <!-- Quick Stats Grid -->
+        <div class="bento-card bento-stat glass">
+          <div class="stat-number text-gradient">8.27</div>
+          <div class="stat-label">Cumulative GPA @ IIIT Ranchi</div>
+          <div class="stat-detail">Electronics & Communication Engineering ('28)</div>
+        </div>
+
+        <div class="bento-card bento-stat glass">
+          <div class="stat-number text-amber">1553</div>
+          <div class="stat-label">Peak CodeChef Rating</div>
+          <div class="stat-detail">Consistent algorithmic problem solving</div>
+        </div>
+
+        <div class="bento-card bento-stat glass">
+          <div class="stat-number text-emerald">200+</div>
+          <div class="stat-label">DSA Problems Mastered</div>
+          <div class="stat-detail">Graph Theory, Trees, DP & Low-Level Primitives</div>
+        </div>
+
+        <div class="bento-card bento-stat glass">
+          <div class="stat-number text-amber">SIH '25</div>
+          <div class="stat-label">National Qualifier</div>
+          <div class="stat-detail">Smart India Hackathon national engineering round</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 3. EXPERIENCE SECTION ==================== -->
+    <section id="experience" class="section-container">
+      <div class="section-header">
+        <span class="section-pill">02 // TRACK RECORD</span>
+        <h2 class="section-title">Work Experience & Startups</h2>
+        <p class="section-subtitle">Real-world production engineering in streaming voice intelligence and wearable medical devices.</p>
       </div>
 
-      <!-- Projects Grid -->
-      <div class="projects-grid" id="projects-grid">
-
-        <!-- Project 1: HELIOS -->
-        <article class="project-card magnetic-tilt" data-category="systems" data-project="helios">
-          <div class="card-inner">
-            <div class="card-top-bar">
-              <span class="project-category-tag">ENTERPRISE API COMPILER & COPILOT</span>
-              <div class="live-indicator"><span class="dot live"></span>VERIFIED LIVE</div>
+      <div class="timeline-container">
+        <!-- Experience Card 1: Stealthera Innovations -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card glass">
+            <div class="timeline-card-header">
+              <div class="role-company">
+                <h3 class="role-title">AI Engineer Intern</h3>
+                <h4 class="company-name text-amber">Stealthera Innovations Pvt. Ltd.</h4>
+              </div>
+              <div class="timeline-meta">
+                <span class="timeline-badge">Jun 2026 – Present</span>
+                <span class="location-badge">Remote</span>
+              </div>
             </div>
 
-            <div class="card-header">
-              <h3 class="project-title">HELIOS</h3>
-              <p class="project-tagline">Enterprise API Engineering Workbench & Local RAG Copilot</p>
-            </div>
-
-            <p class="project-description">
-              Engineered an enterprise API platform compiling OpenAPI 2.0/3.0/3.1 specs into a unified AST. 
-              Enables breaking-change diffing, automated SDK generation, and offline security compliance (PCI-DSS 4.0, HIPAA, OWASP Top 10) with an automated Canary Test Suite guaranteeing zero hallucinations.
+            <p class="role-summary">
+              Driving production speech recognition and voice intelligence architectures for real-time applications.
             </p>
 
-            <div class="project-highlights">
-              <div class="highlight-item">
-                <span class="highlight-key">Architecture:</span>
-                <span class="highlight-val">Turborepo Monorepo (10 Decoupled Packages)</span>
-              </div>
-              <div class="highlight-item">
-                <span class="highlight-key">AI Engine:</span>
-                <span class="highlight-val">Local RAG via Ollama (qwen2.5:7b) • 100% Offline</span>
-              </div>
-              <div class="highlight-item">
-                <span class="highlight-key">Governance:</span>
-                <span class="highlight-val">Automated YAML Remediation & 0-100 Security Scoring</span>
-              </div>
-            </div>
+            <ul class="deliverables-list">
+              <li>
+                <span class="bullet-accent">▹</span>
+                <span><strong>Speech Recognition Pipelines:</strong> Engineered low-latency voice pipelines with Faster-Whisper and modern ASR models, reducing transcription latency for streaming audio.</span>
+              </li>
+              <li>
+                <span class="bullet-accent">▹</span>
+                <span><strong>Audio Signal Preprocessing:</strong> Implemented signal segmentation, silence removal, dynamic range normalization, and anomaly detection to handle acoustic noise.</span>
+              </li>
+              <li>
+                <span class="bullet-accent">▹</span>
+                <span><strong>Model Inference Optimization:</strong> Quantized models and fine-tuned parameters for resource-constrained deployment environments.</span>
+              </li>
+              <li>
+                <span class="bullet-accent">▹</span>
+                <span><strong>Comparative Benchmarking:</strong> Conducted multi-model benchmarks evaluating Word Error Rate (WER), latency, and memory footprint across varied acoustic settings.</span>
+              </li>
+            </ul>
 
-            <div class="tech-pills">
-              <span class="pill">Next.js 14</span>
-              <span class="pill">TypeScript</span>
-              <span class="pill">Turborepo</span>
-              <span class="pill">Ollama</span>
-              <span class="pill">OpenAPI AST</span>
-              <span class="pill">Zod</span>
-            </div>
-
-            <div class="card-footer">
-              <a href="https://helios-web-eosin.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
-                <span>LIVE DEMO</span>
-                <svg class="icon-arrow" viewBox="0 0 16 16" fill="currentColor">
-                  <path d="M4.5 11.5L11.5 4.5M11.5 4.5H5.5M11.5 4.5V10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </a>
-              <a href="https://github.com/pranjal9091" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm">
-                <span>GITHUB REPO</span>
-              </a>
-              <button class="btn btn-outline btn-sm inspect-btn" data-modal="helios">
-                <span>INSPECT SPECS</span>
-              </button>
+            <div class="tech-stack-chips">
+              <span class="chip">Faster-Whisper</span>
+              <span class="chip">PyTorch</span>
+              <span class="chip">Audio DSP</span>
+              <span class="chip">Python</span>
+              <span class="chip">ONNX Runtime</span>
+              <span class="chip">Streaming Inference</span>
             </div>
           </div>
-        </article>
+        </div>
+
+        <!-- Experience Card 2: Arovia Startup -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card glass">
+            <div class="timeline-card-header">
+              <div class="role-company">
+                <h3 class="role-title">Founder & Lead Architect</h3>
+                <h4 class="company-name text-emerald">Arovia (Healthtech & Wearables)</h4>
+              </div>
+              <div class="timeline-meta">
+                <span class="timeline-badge">2024 – 2025</span>
+                <span class="location-badge">Startup</span>
+              </div>
+            </div>
+
+            <p class="role-summary">
+              Founded and architected a 24/7 continuous wearable biometric monitoring system in my first year of engineering.
+            </p>
+
+            <ul class="deliverables-list">
+              <li>
+                <span class="bullet-accent">▹</span>
+                <span><strong>24/7 Continuous Telemetry Engine:</strong> Designed an embedded telemetry pipeline streaming real-time vitals (heart rate variability, SpO2, and biometric stress spikes) with zero cloud latency.</span>
+              </li>
+              <li>
+                <span class="bullet-accent">▹</span>
+                <span><strong>Real-Time Cardiac Anomaly Detection:</strong> Implemented algorithmic filtering to isolate cardiac irregularities and arrhythmia precursors amidst motion artifacts.</span>
+              </li>
+              <li>
+                <span class="bullet-accent">▹</span>
+                <span><strong>Doctor-Grade Preventative Health Summaries:</strong> Synthesized high-volume wearable sensor data streams into actionable clinical reports for preventative diagnosis.</span>
+              </li>
+            </ul>
+
+            <div class="tech-stack-chips">
+              <span class="chip">Wearable Sensors</span>
+              <span class="chip">Biometric Telemetry</span>
+              <span class="chip">Digital Signal Processing</span>
+              <span class="chip">Cardiac Anomaly ML</span>
+              <span class="chip">Embedded Systems</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 4. FLAGSHIP PROJECTS SECTION ==================== -->
+    <section id="projects" class="section-container">
+      <div class="section-header">
+        <span class="section-pill">03 // FLAGSHIP SYSTEMS</span>
+        <h2 class="section-title">Production & Research Architectures</h2>
+        <p class="section-subtitle">Deep systems engineered for zero-server data streaming, medical deep learning, cryptographic timelocks, and local-first AI.</p>
+      </div>
+
+      <div class="projects-grid">
+        <!-- Project 1: HELIOS -->
+        <div class="project-card glass">
+          <div class="project-card-top">
+            <div class="project-header-row">
+              <span class="project-category-tag">Enterprise Developer Tooling</span>
+              <span class="status-live-chip">● Live Production</span>
+            </div>
+            <h3 class="project-title">HELIOS</h3>
+            <p class="project-pitch">Enterprise API Engineering Workbench & Local RAG Copilot.</p>
+            <p class="project-desc">Parses OpenAPI 2.0, 3.0, and 3.1 definitions into a canonical in-memory Abstract Syntax Tree (AST), generating multi-language SDKs and conducting offline compliance audits.</p>
+          </div>
+
+          <div class="project-highlights">
+            <div class="highlight-item">
+              <span class="highlight-icon">✓</span>
+              <span><strong>Unified AST Engine:</strong> Compiles heterogeneous schemas with 0% AI hallucination.</span>
+            </div>
+            <div class="highlight-item">
+              <span class="highlight-icon">✓</span>
+              <span><strong>Compliance Governance:</strong> Audits schemas against PCI-DSS 4.0 and HIPAA regulations.</span>
+            </div>
+            <div class="highlight-item">
+              <span class="highlight-icon">✓</span>
+              <span><strong>Local RAG Copilot:</strong> 100% offline schema embeddings via local Ollama (qwen2.5:7b).</span>
+            </div>
+          </div>
+
+          <div class="project-tech-tags">
+            <span class="tech-tag">Next.js 14</span>
+            <span class="tech-tag">Turborepo</span>
+            <span class="tech-tag">Ollama</span>
+            <span class="tech-tag">TypeScript</span>
+            <span class="tech-tag">OpenAPI AST</span>
+          </div>
+
+          <div class="project-footer-actions">
+            <a href="https://helios-web-eosin.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-project-link primary">
+              <span>Live Demo</span>
+              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+            </a>
+            <a href="https://github.com/pranjal9091" target="_blank" rel="noopener noreferrer" class="btn-project-link secondary">
+              <span>Repository</span>
+            </a>
+            <button class="btn-project-link inspect" data-project-id="helios">
+              <span>Specs</span>
+            </button>
+          </div>
+        </div>
 
         <!-- Project 2: RhythmNet -->
-        <article class="project-card magnetic-tilt" data-category="ai" data-project="rhythmnet">
-          <div class="card-inner">
-            <div class="card-top-bar">
-              <span class="project-category-tag">CLINICAL CARDIAC DEEP LEARNING</span>
-              <div class="live-indicator"><span class="dot live"></span>VERIFIED LIVE</div>
+        <div class="project-card glass">
+          <div class="project-card-top">
+            <div class="project-header-row">
+              <span class="project-category-tag">Clinical Medical AI</span>
+              <span class="status-live-chip">● Live Streamlit</span>
             </div>
+            <h3 class="project-title">RhythmNet</h3>
+            <p class="project-pitch">Clinical Inter-Patient ECG Arrhythmia Intelligence.</p>
+            <p class="project-desc">Medical-grade deep learning architecture built on ANSI/AAMI EC57 standards for automated cardiac beat classification and continuous ambulatory ECG stream processing.</p>
+          </div>
 
-            <div class="card-header">
-              <h3 class="project-title">RhythmNet</h3>
-              <p class="project-tagline">Inter-Patient ECG Arrhythmia Classification & Stream Engine</p>
+          <div class="project-highlights">
+            <div class="highlight-item">
+              <span class="highlight-icon">✓</span>
+              <span><strong>Inter-Patient Protocol:</strong> Evaluated on strict de Chazal DS1/DS2 patient split.</span>
             </div>
-
-            <p class="project-description">
-              Production-hardened cardiac intelligence classifying arrhythmias and quantifying hemodynamic risk adhering to ANSI/AAMI EC57 standards. 
-              Features strict de Chazal inter-patient split (eliminating clinical leakage), continuous Pan-Tompkins QRS detection, and static INT8 ONNX quantization.
-            </p>
-
-            <div class="project-highlights">
-              <div class="highlight-item">
-                <span class="highlight-key">Evaluation:</span>
-                <span class="highlight-val">Strict DS1/DS2 Inter-Patient Split (Zero Leakage)</span>
-              </div>
-              <div class="highlight-item">
-                <span class="highlight-key">Optimization:</span>
-                <span class="highlight-val">Static INT8 ONNX Quantization for Sub-ms Edge Run</span>
-              </div>
-              <div class="highlight-item">
-                <span class="highlight-key">Streaming:</span>
-                <span class="highlight-val">Real-time Pan-Tompkins QRS & Butterworth Filtering</span>
-              </div>
+            <div class="highlight-item">
+              <span class="highlight-icon">✓</span>
+              <span><strong>Pan-Tompkins Engine:</strong> Real-time QRS detection and morphology extraction.</span>
             </div>
-
-            <div class="tech-pills">
-              <span class="pill">Python</span>
-              <span class="pill">PyTorch 1D-CNN</span>
-              <span class="pill">ANSI/AAMI EC57</span>
-              <span class="pill">FastAPI</span>
-              <span class="pill">Streamlit</span>
-              <span class="pill">Docker</span>
-              <span class="pill">ONNX Runtime</span>
-            </div>
-
-            <div class="card-footer">
-              <a href="https://appapppy-fjy6mg2n2xbnrjzyezklmz.streamlit.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
-                <span>LIVE CLINICAL DEMO</span>
-                <svg class="icon-arrow" viewBox="0 0 16 16" fill="currentColor">
-                  <path d="M4.5 11.5L11.5 4.5M11.5 4.5H5.5M11.5 4.5V10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </a>
-              <a href="https://github.com/pranjal9091" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm">
-                <span>GITHUB REPO</span>
-              </a>
-              <button class="btn btn-outline btn-sm inspect-btn" data-modal="rhythmnet">
-                <span>INSPECT SPECS</span>
-              </button>
+            <div class="highlight-item">
+              <span class="highlight-icon">✓</span>
+              <span><strong>Static INT8 ONNX:</strong> Sub-millisecond inference on edge hardware with Focal Loss.</span>
             </div>
           </div>
-        </article>
+
+          <div class="project-tech-tags">
+            <span class="tech-tag">PyTorch 1D-CNN</span>
+            <span class="tech-tag">FastAPI</span>
+            <span class="tech-tag">ONNX INT8</span>
+            <span class="tech-tag">Streamlit</span>
+            <span class="tech-tag">ANSI/AAMI EC57</span>
+          </div>
+
+          <div class="project-footer-actions">
+            <a href="https://appapppy-fjy6mg2n2xbnrjzyezklmz.streamlit.app/" target="_blank" rel="noopener noreferrer" class="btn-project-link primary">
+              <span>Live Demo</span>
+              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+            </a>
+            <a href="https://github.com/pranjal9091" target="_blank" rel="noopener noreferrer" class="btn-project-link secondary">
+              <span>Repository</span>
+            </a>
+            <button class="btn-project-link inspect" data-project-id="rhythmnet">
+              <span>Specs</span>
+            </button>
+          </div>
+        </div>
 
         <!-- Project 3: ShellMind -->
-        <article class="project-card magnetic-tilt" data-category="systems" data-project="shellmind">
-          <div class="card-inner">
-            <div class="card-top-bar">
-              <span class="project-category-tag">SYSTEMS PROGRAMMING & CLI</span>
-              <div class="live-indicator"><span class="dot live"></span>VERIFIED LIVE</div>
+        <div class="project-card glass">
+          <div class="project-card-top">
+            <div class="project-header-row">
+              <span class="project-category-tag">Systems & Rust</span>
+              <span class="status-live-chip">● Live Production</span>
             </div>
+            <h3 class="project-title">ShellMind</h3>
+            <p class="project-pitch">Local-First Natural Language AI Shell for macOS in Rust.</p>
+            <p class="project-desc">Translates plain English intent into verified POSIX zsh commands using compile-time type-state security without compromising developer control.</p>
+          </div>
 
-            <div class="card-header">
-              <h3 class="project-title">ShellMind</h3>
-              <p class="project-tagline">Local-First Natural Language AI Shell Layer for macOS</p>
+          <div class="project-highlights">
+            <div class="highlight-item">
+              <span class="highlight-icon">✓</span>
+              <span><strong>&amp;ValidatedPlan Type-State:</strong> Eliminates command synthesis injection vulnerability.</span>
             </div>
-
-            <p class="project-description">
-              High-performance CLI layer for macOS zsh written in Rust, translating developer intent into POSIX-safe commands. 
-              Enforces a compile-time Type-State security boundary blocking destructive commands, featuring zero-trust buffer injection (`print -z`) and sub-millisecond execution.
-            </p>
-
-            <div class="project-highlights">
-              <div class="highlight-item">
-                <span class="highlight-key">Safety Model:</span>
-                <span class="highlight-val">Compile-Time Type-State Boundary (&ValidatedPlan)</span>
-              </div>
-              <div class="highlight-item">
-                <span class="highlight-key">Execution Speed:</span>
-                <span class="highlight-val">&lt;1ms Tier-1 Deterministic Regex Engine</span>
-              </div>
-              <div class="highlight-item">
-                <span class="highlight-key">Context:</span>
-                <span class="highlight-val">macOS Spotlight API + SQLite On-Device Indexing</span>
-              </div>
+            <div class="highlight-item">
+              <span class="highlight-icon">✓</span>
+              <span><strong>Sub-Millisecond Tier-1:</strong> Instant deterministic regex parser (&lt;1ms).</span>
             </div>
-
-            <div class="tech-pills">
-              <span class="pill">Rust</span>
-              <span class="pill">Zsh Integration</span>
-              <span class="pill">Ollama (qwen2.5:3b)</span>
-              <span class="pill">SQLite</span>
-              <span class="pill">macOS Spotlight</span>
-              <span class="pill">POSIX Safety</span>
-            </div>
-
-            <div class="card-footer">
-              <a href="https://shellmind-landing.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
-                <span>LIVE DEMO</span>
-                <svg class="icon-arrow" viewBox="0 0 16 16" fill="currentColor">
-                  <path d="M4.5 11.5L11.5 4.5M11.5 4.5H5.5M11.5 4.5V10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </a>
-              <a href="https://github.com/pranjal9091" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm">
-                <span>GITHUB REPO</span>
-              </a>
-              <button class="btn btn-outline btn-sm inspect-btn" data-modal="shellmind">
-                <span>INSPECT SPECS</span>
-              </button>
+            <div class="highlight-item">
+              <span class="highlight-icon">✓</span>
+              <span><strong>Spotlight Context:</strong> Enriched with native macOS metadata and local SQLite indexing.</span>
             </div>
           </div>
-        </article>
+
+          <div class="project-tech-tags">
+            <span class="tech-tag">Rust</span>
+            <span class="tech-tag">Zsh Shell</span>
+            <span class="tech-tag">SQLite</span>
+            <span class="tech-tag">Type-State Safety</span>
+            <span class="tech-tag">macOS Spotlight</span>
+          </div>
+
+          <div class="project-footer-actions">
+            <a href="https://shellmind-landing.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-project-link primary">
+              <span>Live Demo</span>
+              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+            </a>
+            <a href="https://github.com/pranjal9091" target="_blank" rel="noopener noreferrer" class="btn-project-link secondary">
+              <span>Repository</span>
+            </a>
+            <button class="btn-project-link inspect" data-project-id="shellmind">
+              <span>Specs</span>
+            </button>
+          </div>
+        </div>
 
         <!-- Project 4: AirStrings -->
-        <article class="project-card magnetic-tilt" data-category="ai" data-project="airstrings">
-          <div class="card-inner">
-            <div class="card-top-bar">
-              <span class="project-category-tag">COMPUTER VISION & AUDIO SYNTHESIS</span>
-              <div class="live-indicator"><span class="dot live"></span>VERIFIED LIVE</div>
+        <div class="project-card glass">
+          <div class="project-card-top">
+            <div class="project-header-row">
+              <span class="project-category-tag">Computer Vision & Audio DSP</span>
+              <span class="status-live-chip">● Live Production</span>
             </div>
+            <h3 class="project-title">AirStrings</h3>
+            <p class="project-pitch">Gesture-Controlled Virtual Musical Instrument & VJ Visualizer.</p>
+            <p class="project-desc">Transforms any webcam into a touchless polyphonic musical instrument using MediaPipe 3D landmark tracking and Tone.js Web Audio synthesis.</p>
+          </div>
 
-            <div class="card-header">
-              <h3 class="project-title">AirStrings</h3>
-              <p class="project-tagline">Gesture-Controlled Virtual Instrument via Webcam Vision</p>
+          <div class="project-highlights">
+            <div class="highlight-item">
+              <span class="highlight-icon">✓</span>
+              <span><strong>21 3D Landmarks:</strong> Dual-hand real-time spatial coordinate extraction at 60 FPS.</span>
             </div>
-
-            <p class="project-description">
-              Touchless real-time musical performance instrument tracking 21 3D landmarks per hand in the browser. 
-              Features adaptive EMA landmark smoothing, Tone.js polyphonic synthesis with -1dB output limiting, 8-pad percussion mode, and stage VJ motion trails.
-            </p>
-
-            <div class="project-highlights">
-              <div class="highlight-item">
-                <span class="highlight-key">Vision Engine:</span>
-                <span class="highlight-val">GPU MediaPipe Tasks Vision (2 Hands • 21 Landmarks)</span>
-              </div>
-              <div class="highlight-item">
-                <span class="highlight-key">DSP Audio:</span>
-                <span class="highlight-val">Tone.js PolySynth + Dynamic Output Limiter</span>
-              </div>
-              <div class="highlight-item">
-                <span class="highlight-key">VJ Visuals:</span>
-                <span class="highlight-val">Luminescent Motion Trails & Pluck Shockwave Rings</span>
-              </div>
+            <div class="highlight-item">
+              <span class="highlight-icon">✓</span>
+              <span><strong>Adaptive EMA Filter:</strong> Eliminates camera jitter while preserving fast plucking speed.</span>
             </div>
-
-            <div class="tech-pills">
-              <span class="pill">TypeScript</span>
-              <span class="pill">MediaPipe Vision</span>
-              <span class="pill">Tone.js</span>
-              <span class="pill">Web Audio API</span>
-              <span class="pill">HTML5 Canvas</span>
-              <span class="pill">React</span>
-            </div>
-
-            <div class="card-footer">
-              <a href="https://air-strings.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
-                <span>PLAY INSTRUMENT LIVE</span>
-                <svg class="icon-arrow" viewBox="0 0 16 16" fill="currentColor">
-                  <path d="M4.5 11.5L11.5 4.5M11.5 4.5H5.5M11.5 4.5V10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </a>
-              <a href="https://github.com/pranjal9091" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm">
-                <span>GITHUB REPO</span>
-              </a>
-              <button class="btn btn-outline btn-sm inspect-btn" data-modal="airstrings">
-                <span>INSPECT SPECS</span>
-              </button>
+            <div class="highlight-item">
+              <span class="highlight-icon">✓</span>
+              <span><strong>Tone.js PolySynth:</strong> Polyphonic synthesis with output limiter preventing digital clipping.</span>
             </div>
           </div>
-        </article>
+
+          <div class="project-tech-tags">
+            <span class="tech-tag">MediaPipe Vision</span>
+            <span class="tech-tag">Tone.js</span>
+            <span class="tech-tag">Web Audio API</span>
+            <span class="tech-tag">Canvas VJ</span>
+            <span class="tech-tag">JavaScript</span>
+          </div>
+
+          <div class="project-footer-actions">
+            <a href="https://air-strings.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-project-link primary">
+              <span>Live Demo</span>
+              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+            </a>
+            <a href="https://github.com/pranjal9091" target="_blank" rel="noopener noreferrer" class="btn-project-link secondary">
+              <span>Repository</span>
+            </a>
+            <button class="btn-project-link inspect" data-project-id="airstrings">
+              <span>Specs</span>
+            </button>
+          </div>
+        </div>
 
         <!-- Project 5: P2P Drop -->
-        <article class="project-card magnetic-tilt" data-category="distributed" data-project="p2pdrop">
-          <div class="card-inner">
-            <div class="card-top-bar">
-              <span class="project-category-tag">DISTRIBUTED NETWORKING & WEBRTC</span>
-              <div class="live-indicator"><span class="dot live"></span>VERIFIED LIVE</div>
+        <div class="project-card glass">
+          <div class="project-card-top">
+            <div class="project-header-row">
+              <span class="project-category-tag">Distributed Networking</span>
+              <span class="status-live-chip">● Live Production</span>
             </div>
+            <h3 class="project-title">P2P Drop</h3>
+            <p class="project-pitch">Zero-Server Memory-to-Memory File Streaming via WebRTC.</p>
+            <p class="project-desc">Bypasses intermediate cloud servers to stream multi-gigabyte payloads directly between browser memory heaps using WebRTC SCTP DataChannels.</p>
+          </div>
 
-            <div class="card-header">
-              <h3 class="project-title">P2P Drop</h3>
-              <p class="project-tagline">Zero-Server Memory-to-Memory WebRTC File Streaming</p>
+          <div class="project-highlights">
+            <div class="highlight-item">
+              <span class="highlight-icon">✓</span>
+              <span><strong>Zero Server Storage:</strong> Cryptographic end-to-end memory streaming.</span>
             </div>
-
-            <p class="project-description">
-              Stream arbitrary multi-gigabyte binary payloads directly between browser device memory heaps. 
-              Bypasses cloud storage completely using WebRTC DataChannels, DTLS 1.2+ end-to-end encryption, 8MB/1MB buffer backpressure management, and SHA-256 integrity verification.
-            </p>
-
-            <div class="project-highlights">
-              <div class="highlight-item">
-                <span class="highlight-key">Data Path:</span>
-                <span class="highlight-val">Pure Peer-to-Peer (0 Bytes Retained on Servers)</span>
-              </div>
-              <div class="highlight-item">
-                <span class="highlight-key">Pipelining:</span>
-                <span class="highlight-val">64KB SCTP Chunks with 2MB Memory Pre-Fetching</span>
-              </div>
-              <div class="highlight-item">
-                <span class="highlight-key">Security:</span>
-                <span class="highlight-val">DTLS 1.2+ (AES-128-GCM) & WebCrypto SHA-256</span>
-              </div>
+            <div class="highlight-item">
+              <span class="highlight-icon">✓</span>
+              <span><strong>Backpressure Engine:</strong> Dynamic watermark coordination preventing memory overflow.</span>
             </div>
-
-            <div class="tech-pills">
-              <span class="pill">WebRTC DataChannel</span>
-              <span class="pill">STUN / TURN / ICE</span>
-              <span class="pill">WebCrypto API</span>
-              <span class="pill">Canvas Oscilloscope</span>
-              <span class="pill">TypeScript</span>
-            </div>
-
-            <div class="card-footer">
-              <a href="https://p2-p-drop.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
-                <span>LAUNCH P2P DROP</span>
-                <svg class="icon-arrow" viewBox="0 0 16 16" fill="currentColor">
-                  <path d="M4.5 11.5L11.5 4.5M11.5 4.5H5.5M11.5 4.5V10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </a>
-              <a href="https://github.com/pranjal9091/P2P-Drop" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm">
-                <span>GITHUB REPO</span>
-              </a>
-              <button class="btn btn-outline btn-sm inspect-btn" data-modal="p2pdrop">
-                <span>INSPECT SPECS</span>
-              </button>
+            <div class="highlight-item">
+              <span class="highlight-icon">✓</span>
+              <span><strong>SHA-256 WebCrypto:</strong> Bit-perfect cryptographic verification on the receiver node.</span>
             </div>
           </div>
-        </article>
+
+          <div class="project-tech-tags">
+            <span class="tech-tag">WebRTC DataChannels</span>
+            <span class="tech-tag">WebCrypto API</span>
+            <span class="tech-tag">SCTP Protocol</span>
+            <span class="tech-tag">Vanilla JS</span>
+          </div>
+
+          <div class="project-footer-actions">
+            <a href="https://p2-p-drop.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-project-link primary">
+              <span>Live Demo</span>
+              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+            </a>
+            <a href="https://github.com/pranjal9091/P2P-Drop" target="_blank" rel="noopener noreferrer" class="btn-project-link secondary">
+              <span>Repository</span>
+            </a>
+            <button class="btn-project-link inspect" data-project-id="p2pdrop">
+              <span>Specs</span>
+            </button>
+          </div>
+        </div>
 
         <!-- Project 6: Chronolock -->
-        <article class="project-card magnetic-tilt" data-category="distributed" data-project="chronolock">
-          <div class="card-inner">
-            <div class="card-top-bar">
-              <span class="project-category-tag">CRYPTOGRAPHY & TIMELOCK VAULT</span>
-              <div class="live-indicator"><span class="dot live"></span>VERIFIED LIVE</div>
+        <div class="project-card glass">
+          <div class="project-card-top">
+            <div class="project-header-row">
+              <span class="project-category-tag">Applied Cryptography</span>
+              <span class="status-live-chip">● Live Production</span>
             </div>
+            <h3 class="project-title">Chronolock</h3>
+            <p class="project-pitch">Cryptographic Timelock Vault using Verifiable Delay Functions.</p>
+            <p class="project-desc">Guarantees that encrypted secrets cannot be cracked before a target wall-clock time, even by parallelized supercomputing clusters.</p>
+          </div>
 
-            <div class="card-header">
-              <h3 class="project-title">Chronolock</h3>
-              <p class="project-tagline">Cryptographic Time-Capsule Vault via Verifiable Delay Functions</p>
+          <div class="project-highlights">
+            <div class="highlight-item">
+              <span class="highlight-icon">✓</span>
+              <span><strong>Sequential Squaring VDF:</strong> Mathematically non-parallelizable compute primitive.</span>
             </div>
-
-            <p class="project-description">
-              Mathematically guaranteed timelock encryption vault using Pietrzak VDFs ($x^{2^T} \bmod N$). 
-              Guarantees data cannot be decrypted before a future time even with supercomputers or cloud clusters, verified in sub-5ms with zero trusted third parties.
-            </p>
-
-            <div class="project-highlights">
-              <div class="highlight-item">
-                <span class="highlight-key">VDF Primitive:</span>
-                <span class="highlight-val">Non-Parallelizable Modular Squarings (a^(2^T) mod N)</span>
-              </div>
-              <div class="highlight-item">
-                <span class="highlight-key">Proof Protocol:</span>
-                <span class="highlight-val">Pietrzak O(log T) Halving Protocol (Sub-5ms Verifier)</span>
-              </div>
-              <div class="highlight-item">
-                <span class="highlight-key">Concurrency:</span>
-                <span class="highlight-val">Multithreaded Web Workers for Background Calibration</span>
-              </div>
+            <div class="highlight-item">
+              <span class="highlight-icon">✓</span>
+              <span><strong>Pietrzak Proofs:</strong> Sub-5ms verification without repeating computational work.</span>
             </div>
-
-            <div class="tech-pills">
-              <span class="pill">Verifiable Delay Functions</span>
-              <span class="pill">AES-256-GCM</span>
-              <span class="pill">Web Crypto API</span>
-              <span class="pill">Web Workers</span>
-              <span class="pill">TypeScript</span>
-              <span class="pill">Vite</span>
-            </div>
-
-            <div class="card-footer">
-              <a href="https://chronolock-eight.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
-                <span>OPEN TIMELOCK VAULT</span>
-                <svg class="icon-arrow" viewBox="0 0 16 16" fill="currentColor">
-                  <path d="M4.5 11.5L11.5 4.5M11.5 4.5H5.5M11.5 4.5V10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </a>
-              <a href="https://github.com/pranjal9091/Chronolock" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm">
-                <span>GITHUB REPO</span>
-              </a>
-              <button class="btn btn-outline btn-sm inspect-btn" data-modal="chronolock">
-                <span>INSPECT SPECS</span>
-              </button>
+            <div class="highlight-item">
+              <span class="highlight-icon">✓</span>
+              <span><strong>AES-256-GCM:</strong> Packaged into standalone .chronolock digital capsules.</span>
             </div>
           </div>
-        </article>
 
+          <div class="project-tech-tags">
+            <span class="tech-tag">Verifiable Delay Functions</span>
+            <span class="tech-tag">Pietrzak Proofs</span>
+            <span class="tech-tag">AES-256-GCM</span>
+            <span class="tech-tag">Web Workers</span>
+          </div>
+
+          <div class="project-footer-actions">
+            <a href="https://chronolock-eight.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-project-link primary">
+              <span>Live Demo</span>
+              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+            </a>
+            <a href="https://github.com/pranjal9091/Chronolock" target="_blank" rel="noopener noreferrer" class="btn-project-link secondary">
+              <span>Repository</span>
+            </a>
+            <button class="btn-project-link inspect" data-project-id="chronolock">
+              <span>Specs</span>
+            </button>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Work Experience & Education Section -->
-  <section id="experience" class="section experience-section">
-    <div class="section-container">
+    <!-- ==================== 5. HACKATHONS ARENA ==================== -->
+    <section id="hackathons" class="section-container">
       <div class="section-header">
-        <div class="section-tag">// 02. TRACK RECORD & ROLES</div>
-        <h2 class="section-title">Where engineering rigor meets production impact.</h2>
+        <span class="section-pill">04 // COMPETITIVE ARENA</span>
+        <h2 class="section-title">Hackathons & Engineering Arenas</h2>
+        <p class="section-subtitle">Rigorous competitive problem solving under tight execution timelines and national arenas.</p>
       </div>
 
-      <div class="timeline-wrapper">
-
-        <!-- Experience 1: Stealthera Innovations -->
-        <div class="timeline-card active">
-          <div class="timeline-marker">
-            <span class="marker-dot"></span>
-            <span class="marker-line"></span>
-          </div>
-          <div class="timeline-content">
-            <div class="timeline-header">
-              <div>
-                <h3 class="role-title">AI Engineer Intern</h3>
-                <h4 class="company-name">Stealthera Innovations Pvt. Ltd. <span class="badge-role">Remote</span></h4>
-              </div>
-              <div class="timeline-period">Jun 2026 — Present</div>
-            </div>
-
-            <ul class="timeline-bullets">
-              <li>
-                <strong>Speech Recognition & Voice Intelligence:</strong> Built and evaluated end-to-end speech recognition pipelines leveraging Faster-Whisper and modern ASR architectures for real-time conversational AI workflows.
-              </li>
-              <li>
-                <strong>Audio Signal Preprocessing & Anomaly Detection:</strong> Preprocessed high-variance acoustic datasets (noise removal, audio segmentation, dynamic range normalization); extracted acoustic biomarkers and speech anomalies for training pipelines.
-              </li>
-              <li>
-                <strong>Model Fine-Tuning & Quantization:</strong> Fine-tuned deep speech models and optimized inference performance to boost transcription accuracy and slash latency in streaming voice applications.
-              </li>
-              <li>
-                <strong>Systematic Benchmarking:</strong> Ran rigorous multi-model comparative benchmarks across accuracy (WER), inference speed, and compute memory profiles to guide core architecture decisions.
-              </li>
-            </ul>
-
-            <div class="tech-pills">
-              <span class="pill">Whisper</span>
-              <span class="pill">Faster-Whisper</span>
-              <span class="pill">PyTorch</span>
-              <span class="pill">ASR Pipelines</span>
-              <span class="pill">Audio Preprocessing</span>
-              <span class="pill">Inference Optimization</span>
-            </div>
+      <!-- Featured Hackathons Grid -->
+      <div class="featured-hackathons-grid">
+        <div class="hackathon-card glass">
+          <div class="hack-badge">National Finalist</div>
+          <h3 class="hack-title">Smart India Hackathon 2025</h3>
+          <p class="hack-desc">Collaborated in the national-level innovation arena, engineering practical end-to-end hardware and AI solutions under Ministry criteria.</p>
+          <div class="hack-meta">
+            <span>SIH 2025</span> • <span>National Level</span>
           </div>
         </div>
 
-        <!-- Experience 2: Arovia Startup -->
-        <div class="timeline-card">
-          <div class="timeline-marker">
-            <span class="marker-dot"></span>
-            <span class="marker-line"></span>
-          </div>
-          <div class="timeline-content">
-            <div class="timeline-header">
-              <div>
-                <h3 class="role-title">Founder & Lead Systems Architect</h3>
-                <h4 class="company-name">Arovia <span class="badge-role">Healthtech Startup</span></h4>
-              </div>
-              <div class="timeline-period">2024 — 2025 (1st Year)</div>
-            </div>
-
-            <ul class="timeline-bullets">
-              <li>
-                <strong>24/7 Continuous Biometric Monitoring:</strong> Built a real-time health surveillance system integrating with wearable sensors to stream and process continuous cardiovascular metrics (heart rate, pulse waves, SpO2, and HRV).
-              </li>
-              <li>
-                <strong>Predictive Cardiac & Anomaly Insights:</strong> Designed anomaly detection algorithms to identify irregularities, abnormal cardiac spikes, and physiological stress patterns in real time before clinical symptoms manifest.
-              </li>
-              <li>
-                <strong>Doctor-Grade Preventative Diagnostics:</strong> Engineered automated clinical insight pipelines converting raw noisy biometric telemetry into actionable, preventative health guidance and doctor-ready diagnostic summaries.
-              </li>
-            </ul>
-
-            <div class="tech-pills">
-              <span class="pill">Healthtech</span>
-              <span class="pill">Wearable Biometrics</span>
-              <span class="pill">Continuous Telemetry</span>
-              <span class="pill">Signal DSP</span>
-              <span class="pill">Preventative AI</span>
-              <span class="pill">IoT Systems</span>
-            </div>
+        <div class="hackathon-card glass">
+          <div class="hack-badge">Peak 1553</div>
+          <h3 class="hack-title">CodeChef Competitive Arena</h3>
+          <p class="hack-desc">Regularly competing in rated algorithmic contests; achieved a peak rating of 1553 through rigorous data structures and time-bounded problem solving.</p>
+          <div class="hack-meta">
+            <span>Division 2</span> • <span>Algorithmic CP</span>
           </div>
         </div>
 
-        <!-- Education: IIIT Ranchi -->
-        <div class="timeline-card">
-          <div class="timeline-marker">
-            <span class="marker-dot"></span>
-          </div>
-          <div class="timeline-content education-card">
-            <div class="timeline-header">
-              <div>
-                <h3 class="role-title">B.Tech in Electronics & Communication Engineering</h3>
-                <h4 class="company-name">Indian Institute of Information Technology, Ranchi (IIIT Ranchi)</h4>
-              </div>
-              <div class="timeline-period">2024 — 2028</div>
-            </div>
-
-            <div class="edu-metrics">
-              <div class="edu-badge"><strong>CGPA:</strong> 8.27 / 10.0</div>
-              <div class="edu-badge"><strong>Focus:</strong> Embedded Systems, Digital Signal Processing, Hardware AI</div>
-              <div class="edu-badge"><strong>Location:</strong> Ranchi, Jharkhand</div>
-            </div>
+        <div class="hackathon-card glass">
+          <div class="hack-badge">Engineering Track</div>
+          <h3 class="hack-title">Flipkart GRIDs 2.0</h3>
+          <p class="hack-desc">Competed in the national engineering challenge, architecting high-throughput algorithmic pipelines for complex logistics and system constraints.</p>
+          <div class="hack-meta">
+            <span>Flipkart</span> • <span>System Design</span>
           </div>
         </div>
 
+        <div class="hackathon-card glass">
+          <div class="hack-badge">Cloud Architecture</div>
+          <h3 class="hack-title">Google Cloud Arcade</h3>
+          <p class="hack-desc">Completed hands-on labs and architectural challenges focusing on cloud compute, Kubernetes deployment, and scalable backend infrastructure.</p>
+          <div class="hack-meta">
+            <span>Google Cloud</span> • <span>Cloud DevOps</span>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
 
-  <!-- Technical Skills & Stack Section -->
-  <section id="skills" class="section skills-section">
-    <div class="section-container">
+      <!-- Engineering Arenas Logo Badges Grid (Jiya-inspired arena badges) -->
+      <div class="arena-section-title">
+        <span class="text-dim">COMPETITIVE ARENAS & HACKATHON CIRCUITS</span>
+      </div>
+      <div class="arena-badges-grid">
+        <div class="arena-badge-card glass">
+          <span class="arena-org-name">SIH 2025</span>
+          <span class="arena-sub">National Circuit</span>
+        </div>
+        <div class="arena-badge-card glass">
+          <span class="arena-org-name">CodeChef</span>
+          <span class="arena-sub">Peak 1553</span>
+        </div>
+        <div class="arena-badge-card glass">
+          <span class="arena-org-name">LeetCode</span>
+          <span class="arena-sub">200+ Solved</span>
+        </div>
+        <div class="arena-badge-card glass">
+          <span class="arena-org-name">Flipkart</span>
+          <span class="arena-sub">GRIDs 2.0</span>
+        </div>
+        <div class="arena-badge-card glass">
+          <span class="arena-org-name">Amazon</span>
+          <span class="arena-sub">HackOn Circuit</span>
+        </div>
+        <div class="arena-badge-card glass">
+          <span class="arena-org-name">Google Cloud</span>
+          <span class="arena-sub">Arcade Track</span>
+        </div>
+        <div class="arena-badge-card glass">
+          <span class="arena-org-name">Meta</span>
+          <span class="arena-sub">Open Source</span>
+        </div>
+        <div class="arena-badge-card glass">
+          <span class="arena-org-name">Cisco</span>
+          <span class="arena-sub">Networks Track</span>
+        </div>
+        <div class="arena-badge-card glass">
+          <span class="arena-org-name">IIT BHU</span>
+          <span class="arena-sub">CodeFest</span>
+        </div>
+        <div class="arena-badge-card glass">
+          <span class="arena-org-name">IIT Madras</span>
+          <span class="arena-sub">Safety Hackathon</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 6. ACHIEVEMENTS SECTION ==================== -->
+    <section id="achievements" class="section-container">
       <div class="section-header">
-        <div class="section-tag">// 03. TOOLING & CAPABILITIES</div>
-        <h2 class="section-title">A modern, full-stack systems engineering toolkit.</h2>
-        <p class="section-subtitle">Categorized by deep competency and proven production execution.</p>
+        <span class="section-pill">05 // DISTINCTIONS</span>
+        <h2 class="section-title">Honors & Core Milestones</h2>
+        <p class="section-subtitle">Multi-disciplinary excellence across competitive programming, telemetry engineering, and systems research.</p>
       </div>
 
-      <div class="skills-grid">
-        <!-- Skill Column 1: AI & ML -->
-        <div class="skill-category-card">
-          <div class="skill-cat-header">
-            <div class="cat-icon ai-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="3"></circle>
-                <path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"></path>
-              </svg>
-            </div>
-            <h3>AI, Voice & Speech Intelligence</h3>
+      <div class="achievements-pillars-grid">
+        <!-- Pillar 1 -->
+        <div class="achievement-pillar-card glass">
+          <div class="pillar-icon text-amber">
+            <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="16 18 22 12 16 6"></polyline>
+              <polyline points="8 6 2 12 8 18"></polyline>
+            </svg>
           </div>
-          <ul class="skill-list">
-            <li><span class="skill-name">LLMs & Local RAG</span> <span class="skill-tag">Ollama / Qwen</span></li>
-            <li><span class="skill-name">Whisper & Faster-Whisper</span> <span class="skill-tag">Real-Time ASR</span></li>
-            <li><span class="skill-name">PyTorch & TensorFlow</span> <span class="skill-tag">Deep Learning</span></li>
-            <li><span class="skill-name">ONNX Runtime</span> <span class="skill-tag">Static INT8 Quantization</span></li>
-            <li><span class="skill-name">LangChain & Generative AI</span> <span class="skill-tag">Agentic Workflows</span></li>
-            <li><span class="skill-name">Audio Signal Processing</span> <span class="skill-tag">FFmpeg / Librosa / DSP</span></li>
+          <h3 class="pillar-title">Competitive Programming & DSA</h3>
+          <ul class="pillar-bullets">
+            <li><strong>CodeChef Peak Rating 1553</strong> in Division 2 rated algorithmic contests.</li>
+            <li><strong>200+ DSA Problems Solved</strong> across Graph algorithms, Dynamic Programming, and complex Trees.</li>
+            <li><strong>Smart India Hackathon 2025</strong> national finalist solving real-world technological challenges.</li>
           </ul>
         </div>
 
-        <!-- Skill Column 2: Systems & Languages -->
-        <div class="skill-category-card">
-          <div class="skill-cat-header">
-            <div class="cat-icon sys-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="16 18 22 12 16 6"></polyline>
-                <polyline points="8 6 2 12 8 18"></polyline>
-              </svg>
-            </div>
-            <h3>Languages & Systems</h3>
+        <!-- Pillar 2 -->
+        <div class="achievement-pillar-card glass">
+          <div class="pillar-icon text-emerald">
+            <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+            </svg>
           </div>
-          <ul class="skill-list">
-            <li><span class="skill-name">Python</span> <span class="skill-tag">Production Core</span></li>
-            <li><span class="skill-name">Rust</span> <span class="skill-tag">Type-State / CLI Safety</span></li>
-            <li><span class="skill-name">TypeScript / JavaScript</span> <span class="skill-tag">Full-Stack / Web APIs</span></li>
-            <li><span class="skill-name">C++</span> <span class="skill-tag">DSA / Performance</span></li>
-            <li><span class="skill-name">SQL</span> <span class="skill-tag">Postgres / SQLite</span></li>
-            <li><span class="skill-name">macOS Zsh & POSIX</span> <span class="skill-tag">Shell Scripting</span></li>
+          <h3 class="pillar-title">Signal Processing & Telemetry</h3>
+          <ul class="pillar-bullets">
+            <li><strong>Founded Arovia</strong> in freshman year, designing 24/7 continuous wearable sensor telemetry engines.</li>
+            <li><strong>Clinical Signal Processing:</strong> Authored Butterworth filtering and Pan-Tompkins QRS morphology extractors for clinical ECG.</li>
+            <li><strong>Hardware Sensor Interfacing:</strong> Experience with bio-potential telemetry, analog-to-digital conversions, and noise cancellation.</li>
           </ul>
         </div>
 
-        <!-- Skill Column 3: Web, Distributed & Audio -->
-        <div class="skill-category-card">
-          <div class="skill-cat-header">
-            <div class="cat-icon web-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="10"></circle>
-                <line x1="2" y1="12" x2="22" y2="12"></line>
-                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-              </svg>
-            </div>
-            <h3>Distributed Transport & Full-Stack</h3>
+        <!-- Pillar 3 -->
+        <div class="achievement-pillar-card glass">
+          <div class="pillar-icon text-amber">
+            <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+            </svg>
           </div>
-          <ul class="skill-list">
-            <li><span class="skill-name">WebRTC DataChannels</span> <span class="skill-tag">P2P SCTP Streaming</span></li>
-            <li><span class="skill-name">Web Audio API & Tone.js</span> <span class="skill-tag">DSP Synthesis</span></li>
-            <li><span class="skill-name">Next.js 14 / React</span> <span class="skill-tag">App Router / SSR</span></li>
-            <li><span class="skill-name">FastAPI & Node.js</span> <span class="skill-tag">High-Throughput Microservices</span></li>
-            <li><span class="skill-name">Web Crypto API</span> <span class="skill-tag">AES-256-GCM / SHA-256</span></li>
-            <li><span class="skill-name">MediaPipe Vision</span> <span class="skill-tag">Hand Skeleton GPU</span></li>
-          </ul>
-        </div>
-
-        <!-- Skill Column 4: Infrastructure & Cryptography -->
-        <div class="skill-category-card">
-          <div class="skill-cat-header">
-            <div class="cat-icon infra-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
-                <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
-                <line x1="6" y1="6" x2="6.01" y2="6"></line>
-                <line x1="6" y1="18" x2="6.01" y2="18"></line>
-              </svg>
-            </div>
-            <h3>Infra, Cryptography & DevOps</h3>
-          </div>
-          <ul class="skill-list">
-            <li><span class="skill-name">Verifiable Delay Functions (VDF)</span> <span class="skill-tag">Pietrzak Proofs</span></li>
-            <li><span class="skill-name">Docker & Compose</span> <span class="skill-tag">Multi-Container Deploy</span></li>
-            <li><span class="skill-name">Turborepo</span> <span class="skill-tag">Monorepos & Workspaces</span></li>
-            <li><span class="skill-name">PostgreSQL / Supabase / Neon</span> <span class="skill-tag">Databases</span></li>
-            <li><span class="skill-name">Web Workers Multithreading</span> <span class="skill-tag">CPU Parallelism</span></li>
-            <li><span class="skill-name">Git & CI/CD Pipelines</span> <span class="skill-tag">Workflows</span></li>
+          <h3 class="pillar-title">Systems Architecture & Cryptography</h3>
+          <ul class="pillar-bullets">
+            <li><strong>Zero-Server Distributed Streaming:</strong> Engineered memory-to-memory WebRTC DataChannels at line-rate.</li>
+            <li><strong>Rust Systems Security:</strong> Implemented compile-time type-state boundary machines in ShellMind.</li>
+            <li><strong>Verifiable Delay Functions:</strong> Implemented Pietrzak halving proofs for mathematical timelock encryption.</li>
           </ul>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- About Section with Real Profile Photo & Engineering Philosophy -->
-  <section id="about" class="section about-section">
-    <div class="section-container">
+    <!-- ==================== 7. SKILLS MATRIX SECTION ==================== -->
+    <section id="skills" class="section-container">
       <div class="section-header">
-        <div class="section-tag">// 04. BACKGROUND & MINDSET</div>
-        <h2 class="section-title">The engineer behind the architecture.</h2>
+        <span class="section-pill">06 // COMPETENCIES</span>
+        <h2 class="section-title">Technical Skill Matrix</h2>
+        <p class="section-subtitle">Categorized competencies spanning low-level systems, speech intelligence, and distributed architecture.</p>
       </div>
 
-      <div class="about-grid">
-        <!-- Profile Photo Card -->
-        <div class="about-image-card">
-          <div class="photo-frame">
-            <img src="./assets/pranjal.jpg" alt="Pranjal Singh — Systems & AI Engineer" class="profile-photo" id="profile-img" />
-            <div class="photo-reflection"></div>
-            <div class="photo-corner-tag">
-              <span class="tag-status"></span>
-              <span>PRANJAL SINGH</span>
-            </div>
-          </div>
-
-          <div class="photo-meta-card">
-            <div class="meta-row">
-              <span class="meta-label">ROLE:</span>
-              <span class="meta-value">AI & Systems Engineer</span>
-            </div>
-            <div class="meta-row">
-              <span class="meta-label">AFFILIATION:</span>
-              <span class="meta-value">IIIT Ranchi (ECE '28)</span>
-            </div>
-            <div class="meta-row">
-              <span class="meta-label">BASE:</span>
-              <span class="meta-value">Ranchi, India • Global Remote</span>
-            </div>
-            <div class="meta-row">
-              <span class="meta-label">CODECHEF RATING:</span>
-              <span class="meta-value text-accent">1553 (Peak)</span>
-            </div>
+      <div class="skills-matrix-grid">
+        <div class="skill-category-card glass">
+          <h3 class="skill-cat-title text-amber">Programming Languages</h3>
+          <div class="skills-chips">
+            <span class="skill-pill">Python</span>
+            <span class="skill-pill">Rust</span>
+            <span class="skill-pill">C / C++</span>
+            <span class="skill-pill">TypeScript</span>
+            <span class="skill-pill">JavaScript (ESNext)</span>
+            <span class="skill-pill">SQL</span>
+            <span class="skill-pill">Zsh Shell Scripting</span>
           </div>
         </div>
 
-        <!-- Bio & Philosophy -->
-        <div class="about-content">
-          <h3 class="about-subheading">Bridging low-level signal intuition with modern AI systems.</h3>
-          
-          <p class="about-text">
-            My background in <strong>Electronics & Communication Engineering</strong> at IIIT Ranchi gives me a unique advantage: I don't treat machine learning or networking as abstract black boxes. I reason about systems from Fourier transforms, bandwidth bottlenecks, sampling frequencies, and memory caches upwards to neural weight matrices and distributed consensus.
-          </p>
-
-          <p class="about-text">
-            Whether I'm building a <strong>Whisper voice intelligence pipeline</strong> at Stealthera Innovations, designing a <strong>zero-trust compile-time security boundary in Rust</strong> for ShellMind, or building an <strong>inter-patient clinical ECG classification engine</strong> adhering to ANSI/AAMI EC57 standards, my focus is consistently on <em>sub-millisecond latency, zero unnecessary cloud dependencies, and verifiable correctness</em>.
-          </p>
-
-          <!-- Key Honours / Achievements Strip -->
-          <div class="achievements-card">
-            <h4 class="achieve-title">Recognitions & Problem Solving</h4>
-            <div class="achieve-grid">
-              <div class="achieve-item">
-                <div class="achieve-badge">SIH '24</div>
-                <div class="achieve-detail">
-                  <strong>Smart India Hackathon</strong>
-                  <span>Qualified internal rounds to represent IIIT Ranchi at the national level.</span>
-                </div>
-              </div>
-              <div class="achieve-item">
-                <div class="achieve-badge">200+</div>
-                <div class="achieve-detail">
-                  <strong>DSA Problems Solved</strong>
-                  <span>Active competitive programmer across LeetCode, CodeChef (1553 rating), and CodeForces.</span>
-                </div>
-              </div>
-              <div class="achieve-item">
-                <div class="achieve-badge">V1.0</div>
-                <div class="achieve-detail">
-                  <strong>Arovia Founder</strong>
-                  <span>Engineered 24/7 wearable biometric monitoring & preventative health insights startup in 1st year.</span>
-                </div>
-              </div>
-              <div class="achieve-item">
-                <div class="achieve-badge">8.27</div>
-                <div class="achieve-detail">
-                  <strong>Academic Excellence</strong>
-                  <span>Maintaining 8.27 CGPA in B.Tech ECE curriculum at IIIT Ranchi.</span>
-                </div>
-              </div>
-            </div>
+        <div class="skill-category-card glass">
+          <h3 class="skill-cat-title text-emerald">AI & Speech Recognition</h3>
+          <div class="skills-chips">
+            <span class="skill-pill">Faster-Whisper</span>
+            <span class="skill-pill">Whisper ASR</span>
+            <span class="skill-pill">PyTorch</span>
+            <span class="skill-pill">Ollama (Local LLMs)</span>
+            <span class="skill-pill">ONNX Runtime INT8</span>
+            <span class="skill-pill">LangChain</span>
+            <span class="skill-pill">RAG Architectures</span>
           </div>
-
         </div>
+
+        <div class="skill-category-card glass">
+          <h3 class="skill-cat-title text-amber">Distributed Systems & Web</h3>
+          <div class="skills-chips">
+            <span class="skill-pill">WebRTC DataChannels</span>
+            <span class="skill-pill">Web Audio API</span>
+            <span class="skill-pill">WebCrypto API</span>
+            <span class="skill-pill">Next.js 14 / App Router</span>
+            <span class="skill-pill">FastAPI</span>
+            <span class="skill-pill">Turborepo</span>
+            <span class="skill-pill">Docker</span>
+          </div>
+        </div>
+
+        <div class="skill-category-card glass">
+          <h3 class="skill-cat-title text-emerald">Signal Processing & Cryptography</h3>
+          <div class="skills-chips">
+            <span class="skill-pill">Digital Signal Processing (DSP)</span>
+            <span class="skill-pill">Fourier Transforms (FFT)</span>
+            <span class="skill-pill">Biomedical Telemetry</span>
+            <span class="skill-pill">Verifiable Delay Functions</span>
+            <span class="skill-pill">Pietrzak Proofs</span>
+            <span class="skill-pill">AES-256-GCM</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 8. EDUCATION SECTION ==================== -->
+    <section id="education" class="section-container">
+      <div class="section-header">
+        <span class="section-pill">07 // ACADEMICS</span>
+        <h2 class="section-title">Education & Foundation</h2>
+        <p class="section-subtitle">Academic grounding in signals, communications, and computational systems.</p>
+      </div>
+
+      <div class="education-card glass">
+        <div class="edu-top-row">
+          <div>
+            <h3 class="edu-degree">Bachelor of Technology (B.Tech)</h3>
+            <h4 class="edu-field text-amber">Electronics and Communication Engineering (ECE)</h4>
+            <div class="edu-institution">Indian Institute of Information Technology (IIIT) Ranchi</div>
+          </div>
+          <div class="edu-timeline-badge">
+            <span>2024 – 2028 (Expected)</span>
+          </div>
+        </div>
+
+        <div class="edu-details-row">
+          <div class="edu-metric-pill glass">
+            <span class="metric-label">Cumulative GPA</span>
+            <span class="metric-value text-gradient">8.27 / 10.0</span>
+          </div>
+          <div class="edu-metric-pill glass">
+            <span class="metric-label">Focus Areas</span>
+            <span class="metric-value">Signal Processing, Digital Communications & AI Systems</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 9. CONTACT SECTION ==================== -->
+    <section id="contact" class="section-container pb-24">
+      <div class="section-header">
+        <span class="section-pill">08 // CONNECT</span>
+        <h2 class="section-title">Let's Build Something High-Performance</h2>
+        <p class="section-subtitle">Open to AI Engineering roles, systems development, research collaborations, and ambitious projects.</p>
+      </div>
+
+      <div class="contact-grid">
+        <!-- Direct Channel Cards -->
+        <a href="mailto:pranjalsingh9091@gmail.com" class="contact-card glass">
+          <div class="contact-card-icon text-amber">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+          </div>
+          <div class="contact-card-info">
+            <span class="contact-label">Email Address</span>
+            <span class="contact-val">pranjalsingh9091@gmail.com</span>
+          </div>
+          <span class="contact-arrow">→</span>
+        </a>
+
+        <a href="https://github.com/pranjal9091" target="_blank" rel="noopener noreferrer" class="contact-card glass">
+          <div class="contact-card-icon text-emerald">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+            </svg>
+          </div>
+          <div class="contact-card-info">
+            <span class="contact-label">GitHub</span>
+            <span class="contact-val">github.com/pranjal9091</span>
+          </div>
+          <span class="contact-arrow">→</span>
+        </a>
+
+        <a href="https://linkedin.com/in/pranjal-singh" target="_blank" rel="noopener noreferrer" class="contact-card glass">
+          <div class="contact-card-icon text-amber">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+              <rect x="2" y="9" width="4" height="12"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+          </div>
+          <div class="contact-card-info">
+            <span class="contact-label">LinkedIn</span>
+            <span class="contact-val">linkedin.com/in/pranjal-singh</span>
+          </div>
+          <span class="contact-arrow">→</span>
+        </a>
+
+        <div class="contact-card glass copy-phone-btn" id="copy-phone-btn" role="button" tabindex="0">
+          <div class="contact-card-icon text-emerald">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+          </div>
+          <div class="contact-card-info">
+            <span class="contact-label">Telephone (Click to Copy)</span>
+            <span class="contact-val">+91-81712 07094</span>
+          </div>
+          <span class="contact-arrow" id="phone-copy-icon">📋</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-left">
+          <span>© 2026 <strong>Pranjal Singh</strong>. Designed with Obsidian & Warm Sand glassmorphism.</span>
+        </div>
+        <div class="footer-right">
+          <a href="#home" class="footer-top-btn">Back to top ↑</a>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- ==================== SPECIFICATION MODAL ==================== -->
+  <div id="project-modal" class="modal-backdrop hidden" aria-hidden="true" role="dialog">
+    <div class="modal-container glass">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <span id="modal-category" class="modal-category">CATEGORY</span>
+          <h2 id="modal-title" class="modal-title">Project Title</h2>
+        </div>
+        <button id="modal-close-btn" class="modal-close-btn" aria-label="Close modal">×</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="modal-section">
+          <h3 class="modal-section-title">ARCHITECTURAL RATIONALE</h3>
+          <p id="modal-desc" class="modal-desc"></p>
+        </div>
+
+        <div class="modal-section">
+          <h3 class="modal-section-title">PRODUCTION BENCHMARKS & VERIFICATION</h3>
+          <div id="modal-metrics" class="modal-metrics-grid"></div>
+        </div>
+
+        <div class="modal-section">
+          <h3 class="modal-section-title">DEEP-DIVE SYSTEM SPECIFICATION</h3>
+          <div id="modal-architecture" class="modal-architecture-box"></div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <a id="modal-live-link" href="#" target="_blank" rel="noopener noreferrer" class="btn-primary-hero text-sm">
+          <span>Launch Production Deployment</span>
+          <svg class="w-4 h-4 ml-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+        </a>
+        <a id="modal-github-link" href="#" target="_blank" rel="noopener noreferrer" class="btn-secondary-hero glass text-sm">
+          <span>View Source Repository</span>
+        </a>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- Contact & Direct Signal Footer -->
-  <section id="contact" class="section contact-section">
-    <div class="section-container">
-      <div class="contact-card">
-        <div class="contact-header">
-          <div class="section-tag">// 05. DIRECT SIGNAL</div>
-          <h2 class="contact-title">Let's build something audacious together.</h2>
-          <p class="contact-subtitle">
-            Always open to conversations regarding High-Impact AI Engineering, Systems Architecture, Research Collaborations, and Challenging Roles.
-          </p>
-        </div>
-
-        <div class="contact-links-grid">
-          <a href="mailto:pranjalsingh9091@gmail.com" class="contact-channel-card magnetic-target">
-            <div class="channel-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                <polyline points="22,6 12,13 2,6"></polyline>
-              </svg>
-            </div>
-            <div class="channel-meta">
-              <span class="channel-label">DIRECT EMAIL</span>
-              <span class="channel-value">pranjalsingh9091@gmail.com</span>
-            </div>
-            <span class="channel-action">SEND EMAIL ↗</span>
-          </a>
-
-          <a href="https://github.com/pranjal9091" target="_blank" rel="noopener noreferrer" class="contact-channel-card magnetic-target">
-            <div class="channel-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-              </svg>
-            </div>
-            <div class="channel-meta">
-              <span class="channel-label">GITHUB REPOSITORIES</span>
-              <span class="channel-value">github.com/pranjal9091</span>
-            </div>
-            <span class="channel-action">EXPLORE CODE ↗</span>
-          </a>
-
-          <a href="https://linkedin.com/in/pranjal-singh" target="_blank" rel="noopener noreferrer" class="contact-channel-card magnetic-target">
-            <div class="channel-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                <rect x="2" y="9" width="4" height="12"></rect>
-                <circle cx="4" cy="4" r="2"></circle>
-              </svg>
-            </div>
-            <div class="channel-meta">
-              <span class="channel-label">LINKEDIN NETWORK</span>
-              <span class="channel-value">linkedin.com/in/pranjal-singh</span>
-            </div>
-            <span class="channel-action">CONNECT ↗</span>
-          </a>
-
-          <div class="contact-channel-card copy-phone-card magnetic-target" id="phone-copy-card" data-phone="+91-8171207094">
-            <div class="channel-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-              </svg>
-            </div>
-            <div class="channel-meta">
-              <span class="channel-label">PHONE / WHATSAPP</span>
-              <span class="channel-value">+91-81712 07094</span>
-            </div>
-            <span class="channel-action" id="phone-copy-label">CLICK TO COPY</span>
-          </div>
-        </div>
-
-        <div class="footer-bottom">
-          <div class="footer-left">
-            <span>ENGINEERED BY <strong>PRANJAL SINGH</strong></span>
-            <span class="footer-dot">•</span>
-            <span>THREE.JS & VANILLA DESIGN SYSTEM</span>
-            <span class="footer-dot">•</span>
-            <span>NO AI TEMPLATES</span>
-          </div>
-          <div class="footer-right">
-            <a href="#hero" class="back-to-top">BACK TO TOP ↑</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Interactive Terminal Modal (CLI Shell Mode) -->
-  <div id="terminal-modal" class="terminal-modal-backdrop hidden">
-    <div class="terminal-window">
-      <!-- Window Title Bar -->
+  <!-- ==================== INTERACTIVE CLI TERMINAL MODAL ==================== -->
+  <div id="terminal-modal" class="terminal-modal-backdrop hidden" aria-hidden="true">
+    <div class="terminal-window glass">
       <div class="terminal-titlebar">
-        <div class="window-controls">
-          <button class="win-btn close" id="term-close-btn" title="Close Shell (Esc)"></button>
-          <button class="win-btn minimize" id="term-min-btn" title="Minimize Shell"></button>
-          <button class="win-btn maximize" id="term-max-btn" title="Toggle Fullscreen"></button>
+        <div class="term-traffic-lights">
+          <span class="dot dot-close" id="term-close-btn" title="Close Terminal"></span>
+          <span class="dot dot-minimize"></span>
+          <span class="dot dot-maximize"></span>
         </div>
-        <div class="window-title">
-          <span class="win-icon">⚡</span>
-          <span>pranjal@quantum:~ (zsh) — 80x24</span>
-        </div>
-        <div class="window-help-hint">Type <kbd>help</kbd> for commands</div>
+        <div class="term-title-text">pranjal@quantum-core: ~ (zsh) — v2.4</div>
+        <div class="term-shortcuts-hint">Type <span class="term-kbd">help</span> or click commands</div>
       </div>
 
-      <!-- Terminal Output Screen -->
-      <div class="terminal-body" id="terminal-output-container">
-        <!-- Rendered lines will appear here -->
-        <div id="terminal-output"></div>
-
-        <!-- Active Input Line -->
+      <div class="terminal-screen" id="terminal-output-container">
+        <div id="terminal-output" class="terminal-output"></div>
+        
         <div class="terminal-input-row">
-          <span class="terminal-prompt"><span class="user">pranjal</span><span class="at">@</span><span class="host">quantum</span>:<span class="path">~</span><span class="dollar">$</span></span>
-          <input type="text" id="terminal-input" class="terminal-input-field" autocomplete="off" spellcheck="false" autofocus />
-          <span class="terminal-cursor"></span>
+          <span class="term-prompt">pranjal@iiit-ranchi:~$</span>
+          <input type="text" id="terminal-input" class="terminal-input" autofocus autocomplete="off" spellcheck="false" placeholder="Type a command (try 'who', 'projects', 'play')..." />
         </div>
       </div>
-
-      <!-- Terminal Quick Commands Bar -->
-      <div class="terminal-toolbar">
-        <span class="tb-label">Quick Commands:</span>
-        <button class="tb-cmd" data-cmd="help">help</button>
-        <button class="tb-cmd" data-cmd="about">about</button>
-        <button class="tb-cmd" data-cmd="projects">projects</button>
-        <button class="tb-cmd" data-cmd="experience">experience</button>
-        <button class="tb-cmd" data-cmd="skills">skills</button>
-        <button class="tb-cmd" data-cmd="photo">photo</button>
-        <button class="tb-cmd" data-cmd="play" title="Play Blinding Lights">▶ play</button>
-        <button class="tb-cmd" data-cmd="pause" title="Pause playback">⏸ pause</button>
-        <button class="tb-cmd" data-cmd="stop" title="Stop playback">⏹ stop</button>
-        <button class="tb-cmd" data-cmd="contact">contact</button>
-        <button class="tb-cmd" data-cmd="matrix">matrix</button>
-        <button class="tb-cmd" data-cmd="clear">clear</button>
-      </div>
     </div>
   </div>
 
-  <!-- Project Deep-Dive Modal (Inspect Specs) -->
-  <div id="project-modal" class="project-modal-backdrop hidden">
-    <div class="modal-card">
-      <button class="modal-close-btn" id="modal-close-btn">✕</button>
-      <div class="modal-content-scroll" id="modal-dynamic-content">
-        <!-- Injected via JavaScript -->
-      </div>
-    </div>
-  </div>
+  <!-- Toast Notification -->
+  <div id="toast-notification" class="toast-notification hidden"></div>
 
-  <!-- Toast Notification Pill -->
-  <div id="toast" class="toast-notification hidden">
-    <span class="toast-icon">✓</span>
-    <span id="toast-message" class="toast-text">Email copied to clipboard!</span>
-  </div>
-
-  <!-- Scripts -->
+  <!-- Main JavaScript App -->
   <script type="module" src="./src/main.js"></script>
 </body>
 </html>

@@ -1,4 +1,5 @@
 import confetti from 'canvas-confetti';
+import Lenis from 'lenis';
 import { HeroThreeScene } from './threeScene.js';
 import { TerminalCLI } from './terminal.js';
 import { sound } from './audio.js';
@@ -11,7 +12,7 @@ const PROJECT_SPECS = {
     liveUrl: 'https://helios-web-eosin.vercel.app/',
     githubUrl: 'https://github.com/pranjal9091',
     description: `
-      HELIOS was engineered to resolve the fragmentation in enterprise API lifecycles. Instead of treating OpenAPI specifications as static documentation files, HELIOS parses OpenAPI 2.0, 3.0, and 3.1 definitions into a single, canonical in-memory Abstract Syntax Tree (AST).
+      HELIOS was engineered to eliminate fragmentation across enterprise API development lifecycles. Instead of treating OpenAPI specifications as static, disconnected documentation files, HELIOS compiles OpenAPI 2.0, 3.0, and 3.1 definitions into a single, canonical in-memory Abstract Syntax Tree (AST).
     `,
     metrics: [
       { label: 'Canary Test Suite', value: 'verify:ai (0% Hallucination)' },
@@ -21,9 +22,9 @@ const PROJECT_SPECS = {
     ],
     architecture: `
       1. Unified AST Parser: Compiles heterogeneous OpenAPI formats into a single strongly-typed tree.
-      2. Multi-Language CodeGen: Produces TypeScript, Python, and Go SDKs from the verified AST.
+      2. Multi-Language CodeGen: Produces TypeScript, Python, and Go SDKs directly from the verified AST.
       3. Governance Engine: Audits schemas against PCI-DSS and HIPAA rules, yielding 0-100 scores and YAML fix patches.
-      4. Local RAG Copilot: Embeds API schemas locally with Ollama, guaranteed zero third-party cloud leakage.
+      4. Local RAG Copilot: Embeds API schemas locally with Ollama, guaranteed zero third-party cloud data leakage.
     `
   },
   rhythmnet: {
@@ -85,7 +86,7 @@ const PROJECT_SPECS = {
     architecture: `
       1. Vision Layer: GPU-accelerated MediaPipe Tasks Vision extracts 21 3D joint landmarks per hand.
       2. Adaptive EMA: Eliminates camera landmark jitter while preserving natural rapid hand velocity.
-      3. Pluck & Velocity Detection: Detects string-crossing trajectories and computes lateral swipe velocity ($v_x = \\Delta x / \\Delta t$).
+      3. Pluck & Velocity Detection: Detects string-crossing trajectories and computes lateral swipe velocity.
       4. VJ Stage Layer: Luminescent particle trails and shockwave bloom rings synced to audio amplitude.
     `
   },
@@ -135,49 +136,75 @@ const PROJECT_SPECS = {
 
 class PortfolioApp {
   constructor() {
+    this.initSmoothScroll();
     this.initHero3D();
+    this.initVoiceIntro();
     this.initTerminal();
-    this.initSoundToggle();
     this.initMagneticCursor();
-    this.initCardTilt();
-    this.initProjectFilters();
     this.initProjectModal();
     this.initCopyButtons();
-    this.initScrollHeader();
+    this.initScrollSpy();
+  }
+
+  initSmoothScroll() {
+    try {
+      this.lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        orientation: 'vertical',
+        smoothWheel: true,
+      });
+
+      const raf = (time) => {
+        this.lenis.raf(time);
+        requestAnimationFrame(raf);
+      };
+      requestAnimationFrame(raf);
+    } catch (e) {
+      console.warn('Lenis initialization skipped:', e);
+    }
   }
 
   initHero3D() {
     new HeroThreeScene('canvas-3d-container');
   }
 
-  initTerminal() {
-    this.terminal = new TerminalCLI();
+  initVoiceIntro() {
+    const voiceBtn = document.getElementById('voice-intro-btn');
+    const audioEl = document.getElementById('hero-voice-audio');
+
+    if (!voiceBtn || !audioEl) return;
+
+    let isPlaying = false;
+
+    voiceBtn.addEventListener('click', () => {
+      sound.playChime();
+      if (!isPlaying) {
+        audioEl.play().then(() => {
+          isPlaying = true;
+          voiceBtn.classList.add('playing');
+          this.showToast('🎙️ AI Voice Intro: Playing');
+        }).catch((err) => {
+          console.error('Audio play error:', err);
+          this.showToast('Audio playback blocked by browser');
+        });
+      } else {
+        audioEl.pause();
+        audioEl.currentTime = 0;
+        isPlaying = false;
+        voiceBtn.classList.remove('playing');
+        this.showToast('⏸️ AI Voice Intro: Paused');
+      }
+    });
+
+    audioEl.addEventListener('ended', () => {
+      isPlaying = false;
+      voiceBtn.classList.remove('playing');
+    });
   }
 
-  initSoundToggle() {
-    const toggleBtn = document.getElementById('sound-toggle-btn');
-    const iconOn = document.getElementById('sound-icon-on');
-    const iconOff = document.getElementById('sound-icon-off');
-
-    const updateIcons = () => {
-      if (sound.enabled) {
-        iconOn.classList.remove('hidden');
-        iconOff.classList.add('hidden');
-      } else {
-        iconOn.classList.add('hidden');
-        iconOff.classList.remove('hidden');
-      }
-    };
-
-    updateIcons();
-
-    if (toggleBtn) {
-      toggleBtn.addEventListener('click', () => {
-        const state = sound.toggle();
-        updateIcons();
-        this.showToast(state ? 'Mechanical Sound FX: Enabled' : 'Mechanical Sound FX: Muted');
-      });
-    }
+  initTerminal() {
+    this.terminal = new TerminalCLI();
   }
 
   initMagneticCursor() {
@@ -204,8 +231,7 @@ class PortfolioApp {
     };
     loop();
 
-    // Hover effect on interactive elements
-    const targets = document.querySelectorAll('a, button, .project-card, .contact-channel-card, .filter-btn');
+    const targets = document.querySelectorAll('a, button, .project-card, .contact-card, .hackathon-card, .arena-badge-card');
     targets.forEach((el) => {
       el.addEventListener('mouseenter', () => {
         document.body.classList.add('cursor-hover');
@@ -217,171 +243,117 @@ class PortfolioApp {
     });
   }
 
-  initCardTilt() {
-    const cards = document.querySelectorAll('.magnetic-tilt');
-    cards.forEach((card) => {
-      card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-
-        const rotateX = ((y - centerY) / centerY) * -6;
-        const rotateY = ((x - centerX) / centerX) * 6;
-
-        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
-      });
-
-      card.addEventListener('mouseleave', () => {
-        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)';
-      });
-    });
-  }
-
-  initProjectFilters() {
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const projectCards = document.querySelectorAll('.project-card');
-
-    filterBtns.forEach((btn) => {
-      btn.addEventListener('click', () => {
-        sound.playKeyClick();
-        filterBtns.forEach((b) => b.classList.remove('active'));
-        btn.classList.add('active');
-
-        const filter = btn.getAttribute('data-filter');
-
-        projectCards.forEach((card) => {
-          const category = card.getAttribute('data-category');
-          if (filter === 'all' || category === filter) {
-            card.style.display = 'flex';
-            setTimeout(() => {
-              card.style.opacity = '1';
-              card.style.transform = 'scale(1)';
-            }, 50);
-          } else {
-            card.style.opacity = '0';
-            card.style.transform = 'scale(0.96)';
-            setTimeout(() => {
-              card.style.display = 'none';
-            }, 250);
-          }
-        });
-      });
-    });
-  }
-
   initProjectModal() {
     const modal = document.getElementById('project-modal');
-    const modalContent = document.getElementById('modal-dynamic-content');
     const closeBtn = document.getElementById('modal-close-btn');
-    const inspectBtns = document.querySelectorAll('.inspect-btn');
+    const inspectBtns = document.querySelectorAll('.btn-project-link.inspect');
+
+    if (!modal) return;
+
+    const openModal = (projectId) => {
+      const data = PROJECT_SPECS[projectId];
+      if (!data) return;
+
+      sound.playShockwave();
+
+      document.getElementById('modal-category').textContent = data.category;
+      document.getElementById('modal-title').textContent = data.title;
+      document.getElementById('modal-desc').textContent = data.description.trim();
+
+      const metricsContainer = document.getElementById('modal-metrics');
+      metricsContainer.innerHTML = '';
+      data.metrics.forEach((m) => {
+        const div = document.createElement('div');
+        div.className = 'modal-metric-card glass';
+        div.innerHTML = `
+          <div class="metric-card-label">${m.label}</div>
+          <div class="metric-card-value">${m.value}</div>
+        `;
+        metricsContainer.appendChild(div);
+      });
+
+      document.getElementById('modal-architecture').textContent = data.architecture.trim();
+      document.getElementById('modal-live-link').href = data.liveUrl;
+      document.getElementById('modal-github-link').href = data.githubUrl;
+
+      modal.classList.remove('hidden');
+      modal.setAttribute('aria-hidden', 'false');
+    };
+
+    const closeModal = () => {
+      sound.playKeyClick();
+      modal.classList.add('hidden');
+      modal.setAttribute('aria-hidden', 'true');
+    };
 
     inspectBtns.forEach((btn) => {
       btn.addEventListener('click', () => {
-        const projectId = btn.getAttribute('data-modal');
-        const data = PROJECT_SPECS[projectId];
-        if (!data) return;
-
-        sound.playHover();
-
-        modalContent.innerHTML = `
-          <div class="modal-spec-header">
-            <span class="project-category-tag">${data.category}</span>
-            <h2 class="project-title" style="margin-top: 0.5rem; font-size: 1.85rem;">${data.title}</h2>
-          </div>
-
-          <p class="project-description" style="font-size: 1rem; margin-top: 1rem;">
-            ${data.description}
-          </p>
-
-          <div style="margin: 1.5rem 0;">
-            <h4 style="font-family: var(--font-display); font-size: 1.1rem; color: var(--text-primary); margin-bottom: 0.85rem;">Key Performance Metrics</h4>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem;">
-              ${data.metrics.map(m => `
-                <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.06); padding: 0.75rem 1rem; border-radius: 8px;">
-                  <div style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-muted);">${m.label}</div>
-                  <div style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-accent); font-weight: 600; margin-top: 2px;">${m.value}</div>
-                </div>
-              `).join('')}
-            </div>
-          </div>
-
-          <div style="margin: 1.5rem 0;">
-            <h4 style="font-family: var(--font-display); font-size: 1.1rem; color: var(--text-primary); margin-bottom: 0.85rem;">Architectural Breakdown</h4>
-            <pre style="background: #0A0A0E; border: 1px solid var(--border-subtle); padding: 1.25rem; border-radius: 8px; font-family: var(--font-mono); font-size: 0.82rem; color: #D1D0C9; line-height: 1.6; white-space: pre-wrap;">${data.architecture.trim()}</pre>
-          </div>
-
-          <div style="display: flex; gap: 0.85rem; margin-top: 2rem;">
-            <a href="${data.liveUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-              <span>LAUNCH LIVE DEMO ↗</span>
-            </a>
-            <a href="${data.githubUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
-              <span>VIEW SOURCE REPO ↗</span>
-            </a>
-          </div>
-        `;
-
-        modal.classList.remove('hidden');
+        const id = btn.getAttribute('data-project-id');
+        openModal(id);
       });
     });
 
-    const closeModal = () => {
-      modal.classList.add('hidden');
-      sound.playKeyClick();
-    };
-
     if (closeBtn) closeBtn.addEventListener('click', closeModal);
-    if (modal) {
-      modal.addEventListener('click', (e) => {
-        if (e.target === modal) closeModal();
-      });
-    }
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+        closeModal();
+      }
+    });
   }
 
   initCopyButtons() {
-    // Copy Email
-    const copyEmailBtn = document.getElementById('copy-email-btn');
-    if (copyEmailBtn) {
-      copyEmailBtn.addEventListener('click', () => {
-        const email = copyEmailBtn.getAttribute('data-email');
-        navigator.clipboard.writeText(email).then(() => {
-          sound.playChime();
-          this.triggerConfetti();
-          this.showToast(`Email copied: ${email}`);
-        });
-      });
-    }
-
-    // Copy Phone
-    const phoneCard = document.getElementById('phone-copy-card');
-    if (phoneCard) {
-      phoneCard.addEventListener('click', () => {
-        const phone = phoneCard.getAttribute('data-phone');
-        navigator.clipboard.writeText(phone).then(() => {
-          sound.playChime();
-          this.triggerConfetti();
-          this.showToast(`Phone copied: ${phone}`);
-        });
+    const copyPhoneBtn = document.getElementById('copy-phone-btn');
+    if (copyPhoneBtn) {
+      copyPhoneBtn.addEventListener('click', () => {
+        sound.playChime();
+        confetti({ particleCount: 35, spread: 60, origin: { y: 0.8 } });
+        const phone = '+91-8171207094';
+        if (navigator.clipboard) {
+          navigator.clipboard.writeText(phone).then(() => {
+            this.showToast('✓ Phone copied: +91-81712 07094');
+          }).catch(() => {
+            this.showToast('Phone: +91-81712 07094');
+          });
+        }
       });
     }
   }
 
-  triggerConfetti() {
-    confetti({
-      particleCount: 50,
-      spread: 60,
-      origin: { y: 0.8 },
-      colors: ['#E8D5B5', '#38BDF8', '#34D399']
+  initScrollSpy() {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      const scrollY = window.pageYOffset;
+
+      sections.forEach((section) => {
+        const sectionTop = section.offsetTop - 150;
+        const sectionHeight = section.offsetHeight;
+        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach((link) => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
     });
   }
 
   showToast(message) {
-    const toast = document.getElementById('toast');
-    const toastMsg = document.getElementById('toast-message');
-    if (!toast || !toastMsg) return;
+    const toast = document.getElementById('toast-notification');
+    if (!toast) return;
 
-    toastMsg.textContent = message;
+    toast.textContent = message;
     toast.classList.remove('hidden');
 
     clearTimeout(this.toastTimeout);
@@ -389,20 +361,9 @@ class PortfolioApp {
       toast.classList.add('hidden');
     }, 2800);
   }
-
-  initScrollHeader() {
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 40) {
-        navbar.classList.add('scrolled');
-      } else {
-        navbar.classList.remove('scrolled');
-      }
-    });
-  }
 }
 
-// Instantiate on DOM ready
+// Bootstrap Application
 document.addEventListener('DOMContentLoaded', () => {
   new PortfolioApp();
 });
