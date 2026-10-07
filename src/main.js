@@ -138,7 +138,6 @@ class PortfolioApp {
   constructor() {
     this.initSmoothScroll();
     this.initHero3D();
-    this.initVoiceIntro();
     this.initTerminal();
     this.initMagneticCursor();
     this.initProjectModal();
@@ -169,76 +168,7 @@ class PortfolioApp {
     new HeroThreeScene('canvas-3d-container');
   }
 
-  initVoiceIntro() {
-    const voiceBtn = document.getElementById('voice-intro-btn');
-    const audioEl = document.getElementById('hero-voice-audio');
 
-    if (!voiceBtn || !audioEl) return;
-
-    let isPlaying = false;
-    let hasInteracted = false;
-
-    const startAudio = () => {
-      if (isPlaying) return;
-      audioEl.play().then(() => {
-        isPlaying = true;
-        voiceBtn.classList.add('playing');
-        this.showToast('🎙️ Voiceover: Playing (Click icon to Mute)');
-      }).catch(() => {
-        // Autoplay blocked by browser policy; attach first interaction listener
-        attachGestureTrigger();
-      });
-    };
-
-    const attachGestureTrigger = () => {
-      if (hasInteracted) return;
-      const handleFirstInteraction = () => {
-        if (!isPlaying && !hasInteracted) {
-          hasInteracted = true;
-          startAudio();
-        }
-        window.removeEventListener('click', handleFirstInteraction);
-        window.removeEventListener('keydown', handleFirstInteraction);
-        window.removeEventListener('scroll', handleFirstInteraction);
-        window.removeEventListener('touchstart', handleFirstInteraction);
-      };
-
-      window.addEventListener('click', handleFirstInteraction, { once: true });
-      window.addEventListener('keydown', handleFirstInteraction, { once: true });
-      window.addEventListener('scroll', handleFirstInteraction, { once: true });
-      window.addEventListener('touchstart', handleFirstInteraction, { once: true });
-    };
-
-    // Auto-start immediately when website opens
-    setTimeout(() => {
-      startAudio();
-    }, 400);
-
-    voiceBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      sound.playChime();
-      if (!isPlaying) {
-        audioEl.play().then(() => {
-          isPlaying = true;
-          voiceBtn.classList.add('playing');
-          this.showToast('🎙️ Voiceover: Playing');
-        }).catch((err) => {
-          console.error('Audio play error:', err);
-        });
-      } else {
-        audioEl.pause();
-        audioEl.currentTime = 0;
-        isPlaying = false;
-        voiceBtn.classList.remove('playing');
-        this.showToast('⏸️ Voiceover: Muted');
-      }
-    });
-
-    audioEl.addEventListener('ended', () => {
-      isPlaying = false;
-      voiceBtn.classList.remove('playing');
-    });
-  }
 
   initTerminal() {
     this.terminal = new TerminalCLI();

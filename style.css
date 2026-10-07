@@ -498,67 +498,7 @@ body.cursor-hover .cursor-outline {
   transform: translateY(-2px);
 }
 
-/* Floating Voice Intro Button (Bottom Right) */
-.voice-toggle-widget {
-  position: absolute;
-  bottom: 2.5rem;
-  right: 2rem;
-  z-index: 30;
-}
 
-.voice-intro-btn {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.65rem 1.25rem;
-  border-radius: 9999px;
-  color: var(--text-main);
-  cursor: pointer;
-  border: 1px solid var(--border-glass);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-  transition: all 0.25s ease;
-}
-
-.voice-intro-btn:hover {
-  border-color: var(--color-amber);
-  transform: translateY(-2px);
-  box-shadow: var(--glow-amber);
-}
-
-.voice-btn-label {
-  font-size: 0.82rem;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-}
-
-.voice-soundwave {
-  display: flex;
-  align-items: flex-end;
-  gap: 2px;
-  height: 16px;
-}
-
-.wave-bar {
-  width: 3px;
-  background: var(--color-amber);
-  border-radius: 2px;
-  height: 4px;
-  transition: height 0.2s ease;
-}
-
-.voice-intro-btn.playing .wave-bar {
-  animation: wave-bounce 1s infinite ease-in-out;
-}
-
-.voice-intro-btn.playing .wave-bar.bar-1 { animation-delay: 0.1s; }
-.voice-intro-btn.playing .wave-bar.bar-2 { animation-delay: 0.25s; }
-.voice-intro-btn.playing .wave-bar.bar-3 { animation-delay: 0.4s; }
-.voice-intro-btn.playing .wave-bar.bar-4 { animation-delay: 0.15s; }
-
-@keyframes wave-bounce {
-  0%, 100% { height: 4px; }
-  50% { height: 16px; }
-}
 
 .scroll-down-indicator {
   position: absolute;
