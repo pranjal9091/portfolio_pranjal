@@ -363,7 +363,7 @@ export class TerminalCLI {
         </p>
         <p class="term-bio-p">
           I'm studying Electronics & Communication Engineering at <strong class="term-highlight">IIIT Ranchi</strong> (CGPA: <strong>8.27</strong>).
-          Currently, I'm an AI Engineer Intern at <strong class="term-highlight">Stealthera Innovations</strong>, building production speech recognition & real-time voice intelligence pipelines with Faster-Whisper.
+          Currently, I'm the AI Technical Lead at <strong class="term-highlight">Stealthera Innovations</strong>, leading AI-driven voice & speech pipelines, Faster-Whisper integrations, and multi-model experimentation.
         </p>
         <p class="term-bio-p">
           In my first year, I founded <strong class="term-highlight">Arovia</strong>, architecting 24/7 continuous wearable biometric monitoring and doctor-grade preventative cardiac anomaly detection.
@@ -391,7 +391,7 @@ export class TerminalCLI {
       '<div class="term-highlight">// PRANJAL SINGH — SYSTEMS & AI ENGINEER</div>',
       'Undergrad in <span class="term-success">Electronics & Communication Engineering</span> @ <span class="term-highlight">IIIT Ranchi</span> (2024 - 2028).',
       'Cumulative Grade Point Average: <span class="term-highlight">8.27 / 10.0</span>',
-      'Current Position: <span class="term-success">AI Engineer Intern @ Stealthera Innovations Pvt. Ltd.</span>',
+      'Current Position: <span class="term-success">AI Technical Lead @ Stealthera Innovations Pvt. Ltd.</span>',
       '',
       '<div class="term-dim">Philosophy:</div>',
       'Bridging low-level signal processing intuition (sampling, Fourier transforms, bandwidth bottlenecks) with high-level AI systems and zero-server distributed compute.',
@@ -404,7 +404,7 @@ export class TerminalCLI {
     return [
       '<div class="term-highlight">// WORK EXPERIENCE & TRACK RECORD</div>',
       '',
-      '1. <span class="term-success">AI Engineer Intern</span> — <span class="term-highlight">Stealthera Innovations Pvt. Ltd.</span> [Jun 2026 - Present | Remote]',
+      '1. <span class="term-success">AI Technical Lead</span> — <span class="term-highlight">Stealthera Innovations Pvt. Ltd.</span> [Jun 2026 - Present | Remote]',
       '   • Engineered production speech recognition pipelines using Faster-Whisper and ASR architectures.',
       '   • Audio signal preprocessing: segmentation, dynamic range normalization, and anomaly detection.',
       '   • Fine-tuned models and optimized inference latency for streaming voice solutions.',
