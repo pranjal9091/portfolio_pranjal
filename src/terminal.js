@@ -369,7 +369,7 @@ export class TerminalCLI {
           My flagship builds include <span class="term-interactive-cmd" data-cmd="project tijori">PocketPaisa (Tijori)</span> (Full-Stack financial habit engine with 50-30-20 envelopes & Stripe payments), <span class="term-interactive-cmd" data-cmd="project aegis">Aegis Edge Gateway</span> (Distributed Go Zero-Trust proxy with Python Shannon Entropy threat intel & React 19 SOC telemetry), and <span class="term-interactive-cmd" data-cmd="project helios">HELIOS</span> (enterprise OpenAPI AST compiler with offline local RAG).
         </p>
         <p class="term-bio-p">
-          <strong>Quick stats:</strong> SIH National Qualifier, 200+ DSA problems solved, CodeChef Peak <strong>1553</strong>.
+          <strong>Quick stats:</strong> SIH National Qualifier, 200+ DSA problems solved, 8+ Production Full-Stack & AI Systems.
         </p>
       </div>
     `;
@@ -385,14 +385,14 @@ export class TerminalCLI {
   cmdAbout() {
     sound.playHover();
     return [
-      '<div class="term-highlight">// PRANJAL SINGH — SYSTEMS & AI ENGINEER</div>',
+      '<div class="term-highlight">// PRANJAL SINGH — FULL STACK & AI SYSTEMS ENGINEER</div>',
       'Undergrad in <span class="term-success">Electronics & Communication Engineering</span> @ <span class="term-highlight">IIIT Ranchi</span> (2024 - 2028).',
       'Cumulative Grade Point Average: <span class="term-highlight">8.27 / 10.0</span>',
       'Current Position: <span class="term-success">AI Technical Lead @ Stealthera Innovations Pvt. Ltd.</span>',
       '',
       '<div class="term-dim">Philosophy:</div>',
-      'Bridging low-level signal processing intuition (sampling, Fourier transforms, bandwidth bottlenecks) with high-level AI systems and zero-server distributed compute.',
-      'Key Highlights: SIH National Qualifier, CodeChef Peak 1553, 200+ DSA Problems Solved.',
+      'Bridging low-level signal processing intuition (sampling, Fourier transforms, bandwidth bottlenecks) with high-level full-stack AI systems and zero-server distributed compute.',
+      'Key Highlights: SIH National Qualifier, 200+ DSA Problems Solved, 8+ Production Architectures.',
     ];
   }
 
