@@ -6,6 +6,48 @@ import { sound } from './audio.js';
 
 // Project Deep-Dive Specification Data
 const PROJECT_SPECS = {
+  tijori: {
+    title: 'PocketPaisa (Tijori) — Financial Habit Coach & Micro-Savings Platform',
+    category: 'Full Stack Web • React 19 • Node.js • Express • MongoDB • Stripe',
+    liveUrl: 'https://tizori.onrender.com',
+    githubUrl: 'https://github.com/pranjal9091/tizori',
+    description: `
+      PocketPaisa (Tijori) is a full-stack personal finance and micro-savings operating system engineered for students and early-career professionals. Built with React 19, TypeScript, Express, and MongoDB Atlas, it eliminates financial leaks through automated 50-30-20 budget envelopes, digital savings vaults ("Gullaks"), and an instant impulse purchase affordability diagnostic engine.
+    `,
+    metrics: [
+      { label: 'Time-to-Log', value: '<2s Rapid Expense Logging' },
+      { label: 'Budget Division', value: 'Dynamic 50-30-20 Envelopes' },
+      { label: 'Payment Architecture', value: 'Stripe API + 1-Click Sandbox Gateway' },
+      { label: 'Security & Auth', value: 'Google OAuth2 + JWT + Gmail SMTP Alerts' }
+    ],
+    architecture: `
+      1. Dynamic Envelopes & Digital Gullaks: Automates Needs/Wants/Savings distribution and enables atomic deposits/withdrawals with milestone confetti animations.
+      2. "Can I Afford This?" Affordability Engine: Computes real-time cashflow burn velocity, projecting month-end daily allowances before non-essential purchases.
+      3. Aggregation & Leak Detection: MongoDB aggregation pipelines isolate compounding micro-purchases across transit, food delivery, and impulse items.
+      4. Resilient Full Stack Layer: High-performance React 19 frontend with optimistic UI updates and Express/TypeScript REST APIs validated with Zod schemas.
+    `
+  },
+  aegis: {
+    title: 'Aegis Edge Gateway — Distributed Zero-Trust Reverse Proxy & SOC Telemetry',
+    category: 'Distributed Systems • Golang • Python Threat Intel • React 19 • WebSockets',
+    liveUrl: 'https://ageis-bo1b.onrender.com',
+    githubUrl: 'https://github.com/pranjal9091/ageis',
+    description: `
+      Aegis is a high-concurrency, distributed Zero-Trust Reverse Proxy and Real-Time Security Telemetry Engine designed for modern edge architectures. Built with Golang for sub-millisecond packet routing, Python for deep packet Shannon Entropy threat scoring, and React 19 for real-time SOC observability, Aegis guarantees strict, non-bypassable perimeter enforcement.
+    `,
+    metrics: [
+      { label: 'Reverse Proxy Latency', value: 'Sub-3ms p95 Packet Routing (Go Core)' },
+      { label: 'Entropy Threat Engine', value: 'Shannon Entropy H(X) & Heuristic Scoring' },
+      { label: 'SOC Observability', value: 'Bidirectional WebSocket Packet Streaming' },
+      { label: 'Deployment Topology', value: 'Multi-Service Docker + Nginx Edge Routing' }
+    ],
+    architecture: `
+      1. Go Edge Gateway: High-throughput reverse proxy (net/http/httputil) featuring token-bucket rate limiting and Zero-Trust ABAC policies.
+      2. Python Threat Intelligence: Computes real-time Shannon Entropy and regex heuristics to intercept obfuscated SQLi, XSS, and payload tampering.
+      3. Real-Time SOC Dashboard: React 19 frontend rendering live packet feeds, interactive request probe sandboxes, and forensic traces over WebSockets.
+      4. Containerized Edge: Orchestrated multi-container Docker mesh with Nginx reverse routing and dynamic upstream health monitoring.
+    `
+  },
   helios: {
     title: 'HELIOS — Enterprise API Engineering Workbench',
     category: 'API AST Compiler • Local RAG • Compliance Governance',

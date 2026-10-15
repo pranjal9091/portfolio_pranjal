@@ -328,9 +328,9 @@ export class TerminalCLI {
     return [
       '<div class="term-highlight">AVAILABLE COMMANDS:</div>',
       '  <span class="term-success">[who] or [w]</span>        - Bio with ASCII Matrix portrait (or "who is pranjal")',
-      '  <span class="term-success">[skills] or [s]</span>     - Categorized engineering competencies & stack',
-      '  <span class="term-success">[projects] or [pj]</span>   - 6 flagship production & research architectures',
-      '  <span class="term-success">project &lt;id&gt;</span>        - Architecture deep dive (e.g. "project helios")',
+      '  <span class="term-success">[skills] or [s]</span>     - Categorized engineering competencies & stack (Full Stack & AI)',
+      '  <span class="term-success">[projects] or [pj]</span>   - 8 flagship production & research architectures',
+      '  <span class="term-success">project &lt;id&gt;</span>        - Architecture deep dive (e.g. "project tijori" or "project aegis")',
       '  <span class="term-success">[experience] or [exp]</span> - Stealthera Innovations & Arovia Startup timeline',
       '  <span class="term-success">[resume] or [cv]</span>     - Open / download curriculum vitae (PDF)',
       '  <span class="term-success">[email]</span>             - Copy email & trigger client',
@@ -356,23 +356,20 @@ export class TerminalCLI {
     const bioHtml = `
       <div class="term-bio-col">
         <p class="term-bio-p">
-          Hi! I'm <strong>Pranjal Singh</strong> (<strong>@pranjal9091</strong>), an AI & Systems Engineer from <strong>IIIT Ranchi</strong>.
+          Hi! I'm <strong>Pranjal Singh</strong> (<strong>@pranjal9091</strong>), a Full Stack & AI Systems Engineer from <strong>IIIT Ranchi</strong>.
         </p>
         <p class="term-bio-p">
-          Chances are, you've come here after seeing one of my projects. Most of them start as an obsessive engineering deep-dive and turn into high-performance systems — run <span class="term-interactive-cmd" data-cmd="projects">projects</span> to inspect my favorite architectures.
+          I build production-grade web systems from end-to-end: high-performance modern frontends (React 19, Next.js, pure CSS/Tailwind), resilient backend microservices (Node.js/Express, Golang, Python), transactional and document databases (MongoDB Atlas, PostgreSQL), and real-time streaming protocols. Run <span class="term-interactive-cmd" data-cmd="projects">projects</span> to inspect my verified architectures.
         </p>
         <p class="term-bio-p">
           I'm studying Electronics & Communication Engineering at <strong class="term-highlight">IIIT Ranchi</strong> (CGPA: <strong>8.27</strong>).
           Currently, I'm the AI Technical Lead at <strong class="term-highlight">Stealthera Innovations</strong>, leading AI-driven voice & speech pipelines, Faster-Whisper integrations, and multi-model experimentation.
         </p>
         <p class="term-bio-p">
-          In my first year, I founded <strong class="term-highlight">Arovia</strong>, architecting 24/7 continuous wearable biometric monitoring and doctor-grade preventative cardiac anomaly detection.
+          My flagship builds include <span class="term-interactive-cmd" data-cmd="project tijori">PocketPaisa (Tijori)</span> (Full-Stack financial habit engine with 50-30-20 envelopes & Stripe payments), <span class="term-interactive-cmd" data-cmd="project aegis">Aegis Edge Gateway</span> (Distributed Go Zero-Trust proxy with Python Shannon Entropy threat intel & React 19 SOC telemetry), and <span class="term-interactive-cmd" data-cmd="project helios">HELIOS</span> (enterprise OpenAPI AST compiler with offline local RAG).
         </p>
         <p class="term-bio-p">
-          Alongside voice and clinical ML, I engineer local-first natural language CLI layers in Rust (<span class="term-interactive-cmd" data-cmd="project shellmind">ShellMind</span>), zero-server browser streaming (<span class="term-interactive-cmd" data-cmd="project p2pdrop">P2P Drop</span>), and non-parallelizable cryptographic timelock vaults (<span class="term-interactive-cmd" data-cmd="project chronolock">Chronolock</span>).
-        </p>
-        <p class="term-bio-p">
-          <strong>Quick stats:</strong> SIH National Qualifier, 200+ DSA problems solved, CodeChef Peak <strong>1553</strong>. At my core, I love building low-latency, zero-cloud-leakage systems that feel like magic.
+          <strong>Quick stats:</strong> SIH National Qualifier, 200+ DSA problems solved, CodeChef Peak <strong>1553</strong>.
         </p>
       </div>
     `;
@@ -420,42 +417,82 @@ export class TerminalCLI {
   cmdProjects() {
     sound.playHover();
     return [
-      '<div class="term-highlight">// 6 VERIFIED FLAGSHIP PRODUCTION ARCHITECTURES</div>',
+      '<div class="term-highlight">// 8 VERIFIED FLAGSHIP PRODUCTION ARCHITECTURES</div>',
       '',
-      '1. <span class="term-highlight">HELIOS</span> — Enterprise API Workbench & Local RAG Copilot',
+      '1. <span class="term-highlight">PocketPaisa (Tijori)</span> — Financial Habit Coach & Micro-Savings Platform',
+      '   Stack: React 19, TypeScript, Node.js, Express, MongoDB Atlas, Stripe API, Recharts, Zod',
+      '   Demo: <a class="term-link" href="https://tizori.onrender.com" target="_blank">https://tizori.onrender.com</a>',
+      '   Repo: <a class="term-link" href="https://github.com/pranjal9091/tizori" target="_blank">github.com/pranjal9091/tizori</a>',
+      '',
+      '2. <span class="term-highlight">Aegis Edge Gateway</span> — Distributed Zero-Trust Reverse Proxy & SOC Telemetry',
+      '   Stack: Golang Core, Python Threat Intel, React 19, WebSockets, Nginx, Docker',
+      '   Demo: <a class="term-link" href="https://ageis-bo1b.onrender.com" target="_blank">https://ageis-bo1b.onrender.com</a>',
+      '   Repo: <a class="term-link" href="https://github.com/pranjal9091/ageis" target="_blank">github.com/pranjal9091/ageis</a>',
+      '',
+      '3. <span class="term-highlight">HELIOS</span> — Enterprise API Workbench & Local RAG Copilot',
       '   Stack: Next.js 14, Turborepo, Ollama, OpenAPI AST Compiler, PCI-DSS / HIPAA',
-      '   URL: <a class="term-link" href="https://helios-web-eosin.vercel.app/" target="_blank">https://helios-web-eosin.vercel.app/</a>',
+      '   Demo: <a class="term-link" href="https://helios-web-eosin.vercel.app/" target="_blank">https://helios-web-eosin.vercel.app/</a>',
+      '   Repo: <a class="term-link" href="https://github.com/pranjal9091" target="_blank">github.com/pranjal9091</a>',
       '',
-      '2. <span class="term-highlight">RhythmNet</span> — Clinical Inter-Patient ECG Arrhythmia Intelligence',
+      '4. <span class="term-highlight">RhythmNet</span> — Clinical Inter-Patient ECG Arrhythmia Intelligence',
       '   Stack: PyTorch 1D-CNN, ANSI/AAMI EC57, Pan-Tompkins Engine, Static INT8 ONNX, FastAPI',
-      '   URL: <a class="term-link" href="https://appapppy-fjy6mg2n2xbnrjzyezklmz.streamlit.app/" target="_blank">https://appapppy-fjy6mg2n2xbnrjzyezklmz.streamlit.app/</a>',
+      '   Demo: <a class="term-link" href="https://appapppy-fjy6mg2n2xbnrjzyezklmz.streamlit.app/" target="_blank">https://appapppy-fjy6mg2n2xbnrjzyezklmz.streamlit.app/</a>',
+      '   Repo: <a class="term-link" href="https://github.com/pranjal9091" target="_blank">github.com/pranjal9091</a>',
       '',
-      '3. <span class="term-highlight">ShellMind</span> — Local-First Natural Language AI Shell for macOS',
+      '5. <span class="term-highlight">ShellMind</span> — Local-First Natural Language AI Shell for macOS',
       '   Stack: Rust, Zsh, Type-State Safety (&ValidatedPlan), Spotlight API, SQLite',
-      '   URL: <a class="term-link" href="https://shellmind-landing.vercel.app/" target="_blank">https://shellmind-landing.vercel.app/</a>',
+      '   Demo: <a class="term-link" href="https://shellmind-landing.vercel.app/" target="_blank">https://shellmind-landing.vercel.app/</a>',
+      '   Repo: <a class="term-link" href="https://github.com/pranjal9091" target="_blank">github.com/pranjal9091</a>',
       '',
-      '4. <span class="term-highlight">AirStrings</span> — Gesture-Controlled Virtual Musical Instrument',
+      '6. <span class="term-highlight">AirStrings</span> — Gesture-Controlled Virtual Musical Instrument',
       '   Stack: MediaPipe Vision (21 3D Landmarks), Tone.js PolySynth, Web Audio DSP',
-      '   URL: <a class="term-link" href="https://air-strings.vercel.app/" target="_blank">https://air-strings.vercel.app/</a>',
+      '   Demo: <a class="term-link" href="https://air-strings.vercel.app/" target="_blank">https://air-strings.vercel.app/</a>',
+      '   Repo: <a class="term-link" href="https://github.com/pranjal9091" target="_blank">github.com/pranjal9091</a>',
       '',
-      '5. <span class="term-highlight">P2P Drop</span> — Zero-Server Browser-to-Browser File Streaming',
+      '7. <span class="term-highlight">P2P Drop</span> — Zero-Server Browser-to-Browser File Streaming',
       '   Stack: WebRTC DataChannels, STUN/ICE (RFC 8445), 64KB SCTP, SHA-256 Checksums',
-      '   URL: <a class="term-link" href="https://p2-p-drop.vercel.app/" target="_blank">https://p2-p-drop.vercel.app/</a>',
+      '   Demo: <a class="term-link" href="https://p2-p-drop.vercel.app/" target="_blank">https://p2-p-drop.vercel.app/</a>',
+      '   Repo: <a class="term-link" href="https://github.com/pranjal9091/P2P-Drop" target="_blank">github.com/pranjal9091/P2P-Drop</a>',
       '',
-      '6. <span class="term-highlight">Chronolock</span> — Cryptographic Timelock Encryption Vault',
+      '8. <span class="term-highlight">Chronolock</span> — Cryptographic Timelock Encryption Vault',
       '   Stack: Verifiable Delay Functions (VDF x^(2^T) mod N), Pietrzak O(log T), AES-256-GCM',
-      '   URL: <a class="term-link" href="https://chronolock-eight.vercel.app/" target="_blank">https://chronolock-eight.vercel.app/</a>',
+      '   Demo: <a class="term-link" href="https://chronolock-eight.vercel.app/" target="_blank">https://chronolock-eight.vercel.app/</a>',
+      '   Repo: <a class="term-link" href="https://github.com/pranjal9091/Chronolock" target="_blank">github.com/pranjal9091/Chronolock</a>',
     ];
   }
 
   cmdProjectDetail(args) {
     if (!args || args.length === 0) {
-      return ['Usage: <span class="term-highlight">project &lt;helios | rhythmnet | shellmind | airstrings | p2pdrop | chronolock&gt;</span>'];
+      return ['Usage: <span class="term-highlight">project &lt;tijori | aegis | helios | rhythmnet | shellmind | airstrings | p2pdrop | chronolock&gt;</span>'];
     }
     const id = args[0].toLowerCase();
     sound.playHover();
 
     switch (id) {
+      case 'tijori':
+      case 'pocketpaisa':
+        return [
+          '<div class="term-highlight">[SPECS] PocketPaisa (Tijori) — FULL-STACK HABIT COACH & DIGITAL GULLAKS</div>',
+          '• Full Stack: React 19 frontend, Node.js + Express REST APIs, TypeScript, MongoDB Atlas.',
+          '• Envelopes: Automated 50-30-20 cashflow budgeting + atomic savings vaults with celebration confetti.',
+          '• Affordability: "Can I Afford This?" impulse engine computing month-end daily allowance impact.',
+          '• Payments: Stripe Checkout API + instant 1-Click Sandbox evaluation gateway.',
+          '• Auth & Security: Google OAuth2 verification, JWT tokens, and automated Gmail SMTP security alerts.',
+          '• Live URL: <a class="term-link" href="https://tizori.onrender.com" target="_blank">https://tizori.onrender.com</a>',
+          '• GitHub:   <a class="term-link" href="https://github.com/pranjal9091/tizori" target="_blank">https://github.com/pranjal9091/tizori</a>'
+        ];
+      case 'aegis':
+      case 'ageis':
+        return [
+          '<div class="term-highlight">[SPECS] Aegis Edge Gateway — DISTRIBUTED ZERO-TRUST PROXY & SOC TELEMETRY</div>',
+          '• High-Concurrency Core: Go reverse proxy engine with token-bucket sliding-window rate limiting & ABAC.',
+          '• Threat Intelligence: Python engine calculating real-time Shannon Entropy H(X) & heuristic scoring.',
+          '• Low Latency: Sub-3ms p95 packet evaluation intercepting obfuscated SQLi, XSS, and payload tampering.',
+          '• Real-Time SOC: React 19 observability dashboard streaming forensic packet traces over WebSockets.',
+          '• Edge Deployment: Containerized multi-service Docker topology with Nginx reverse routing.',
+          '• Live URL: <a class="term-link" href="https://ageis-bo1b.onrender.com" target="_blank">https://ageis-bo1b.onrender.com</a>',
+          '• GitHub:   <a class="term-link" href="https://github.com/pranjal9091/ageis" target="_blank">https://github.com/pranjal9091/ageis</a>'
+        ];
       case 'helios':
         return [
           '<div class="term-highlight">[SPECS] HELIOS — ENTERPRISE API WORKBENCH</div>',
@@ -512,7 +549,7 @@ export class TerminalCLI {
           '• Live URL: <a class="term-link" href="https://chronolock-eight.vercel.app/" target="_blank">https://chronolock-eight.vercel.app/</a>'
         ];
       default:
-        return [`<span class="term-error">Unknown project: ${id}</span>. Options: helios, rhythmnet, shellmind, airstrings, p2pdrop, chronolock.`];
+        return [`<span class="term-error">Unknown project: ${id}</span>. Options: tijori, aegis, helios, rhythmnet, shellmind, airstrings, p2pdrop, chronolock.`];
     }
   }
 
@@ -520,10 +557,10 @@ export class TerminalCLI {
     sound.playHover();
     return [
       '<div class="term-highlight">// TECHNICAL COMPETENCIES</div>',
-      '• <span class="term-success">Languages:</span> Python, Rust, C++, TypeScript, JavaScript, SQL, Zsh Shell',
-      '• <span class="term-success">AI & Speech:</span> Whisper, Faster-Whisper, PyTorch, Ollama, ONNX INT8, LangChain',
-      '• <span class="term-success">Web & Distributed:</span> WebRTC DataChannels, Web Audio API, Web Crypto API, MediaPipe, Next.js 14, FastAPI',
-      '• <span class="term-success">Cryptography & Systems:</span> Verifiable Delay Functions, AES-256-GCM, Pietrzak Proofs, Turborepo, Docker',
+      '• <span class="term-success">Full Stack & Web:</span> React 19, Next.js 14, Node.js, Express, TypeScript, JavaScript (ESNext), MongoDB Atlas, PostgreSQL, REST & GraphQL APIs, WebSockets, Stripe API, Tailwind CSS, Zod',
+      '• <span class="term-success">Systems & Languages:</span> Golang, Python, Rust, C / C++, SQL, Bash / Zsh Scripting, Nginx, Docker, Turborepo',
+      '• <span class="term-success">AI & Speech Intelligence:</span> Faster-Whisper, Whisper ASR, PyTorch 1D-CNN, Ollama (Local LLMs), ONNX INT8 Runtime, LangChain, RAG Systems',
+      '• <span class="term-success">Distributed & Real-Time:</span> WebRTC DataChannels, Web Audio API, WebCrypto API, Shannon Entropy Heuristics, Verifiable Delay Functions (VDF), AES-256-GCM',
     ];
   }
 
