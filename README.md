@@ -14,6 +14,8 @@
 - **Obsidian & Warm Sand Palette**: Designed from the ground up avoiding generic AI purple/neon gradient templates. Deep studio obsidian (`#0A0D12`), warm amber sand (`#E6A85C`), and terminal emerald (`#34D399`).
 - **Interactive 3D WebGL Core**: Built with Three.js featuring an icosahedron quantum wireframe, counter-rotating orbital rings, and a 1,400-particle kinetic swarm responding smoothly to cursor velocity.
 - **Flagship Production Architectures**:
+  - **PocketPaisa (Tijori)**: Personal Financial Habit Coach & Micro-Savings OS ([Live](https://tizori.onrender.com/))
+  - **Aegis Edge Gateway**: High-Concurrency Zero-Trust Reverse Proxy & Real-Time SOC Telemetry in Go & Python ([Live](https://ageis-bo1b.onrender.com/))
   - **HELIOS**: Enterprise API Workbench & Local RAG Copilot ([Live](https://helios-web-eosin.vercel.app/))
   - **RhythmNet**: Clinical Inter-Patient ECG Arrhythmia Intelligence ([Live](https://appapppy-fjy6mg2n2xbnrjzyezklmz.streamlit.app/))
   - **ShellMind**: Local-First Natural Language AI Shell for macOS in Rust ([Live](https://shellmind-landing.vercel.app/))
@@ -24,9 +26,8 @@
   - Custom command parser with tab completion, history navigation, and Kuber-inspired quick bracket commands (`[who]`, `[skills]`, `[projects]`, `[experience]`, `[resume]`, `[email]`, `[linkedin]`, `[github]`, `[phone]`).
   - **ASCII Matrix Silhouette Card**: Typing `who`, `w`, or `who is pranjal` renders a 2-column card featuring a custom green matrix silhouette of Pranjal alongside his engineering narrative.
   - **YouTube Music Player Easter Egg**: Hidden IFrame audio player streaming *"Blinding Lights" — The Weeknd* with live ~10 fps ASCII equalizer visualizer (`▁▂▃▄▅▆▇█`) and commands (`play`, `pause`, `resume`, `stop`, `vol <0-100>`, `now`, `sudo play`).
-- **Experience & Startup**:
-  - **AI Engineer Intern** @ Stealthera Innovations (Speech recognition with Faster-Whisper, audio DSP, low-latency streaming inference).
-  - **Founder & Lead Architect** @ Arovia (First-year healthtech startup: 24/7 continuous wearable biometric monitoring and doctor-grade cardiac anomaly detection).
+- **Experience & Leadership**:
+  - **AI Technical Lead** @ Stealthera Innovations (Speech recognition with Faster-Whisper, audio DSP, low-latency streaming inference, and multi-model benchmarking).
 
 ---
 

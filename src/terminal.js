@@ -331,7 +331,7 @@ export class TerminalCLI {
       '  <span class="term-success">[skills] or [s]</span>     - Categorized engineering competencies & stack (Full Stack & AI)',
       '  <span class="term-success">[projects] or [pj]</span>   - 8 flagship production & research architectures',
       '  <span class="term-success">project &lt;id&gt;</span>        - Architecture deep dive (e.g. "project tijori" or "project aegis")',
-      '  <span class="term-success">[experience] or [exp]</span> - Stealthera Innovations & Arovia Startup timeline',
+      '  <span class="term-success">[experience] or [exp]</span> - Stealthera Innovations leadership timeline',
       '  <span class="term-success">[resume] or [cv]</span>     - Open / download curriculum vitae (PDF)',
       '  <span class="term-success">[email]</span>             - Copy email & trigger client',
       '  <span class="term-success">[linkedin]</span>          - Launch LinkedIn profile in new tab',
@@ -406,11 +406,6 @@ export class TerminalCLI {
       '   • Audio signal preprocessing: segmentation, dynamic range normalization, and anomaly detection.',
       '   • Fine-tuned models and optimized inference latency for streaming voice solutions.',
       '   • Multi-model comparative benchmarks across WER, latency, and memory footprint.',
-      '',
-      '2. <span class="term-success">Founder & Lead Architect</span> — <span class="term-highlight">Arovia</span> [2024 - 2025 | Healthtech & Wearables]',
-      '   • Architected 24/7 real-time biometric telemetry engine streaming continuous wearable sensor vitals.',
-      '   • Built anomaly detection pipelines flagging cardiac rhythm irregularities, spikes & stress markers.',
-      '   • Converted noisy biometric data streams into actionable doctor-grade preventative health summaries.',
     ];
   }
 
