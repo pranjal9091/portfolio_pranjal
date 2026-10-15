@@ -581,8 +581,8 @@ export class TerminalCLI {
 
   cmdCv() {
     sound.playChime();
-    window.open('./resume.pdf', '_blank');
-    return ['[INITIATED] Opening curriculum vitae in external tab...'];
+    window.open('./pranjal_fullstack.pdf', '_blank');
+    return ['[INITIATED] Opening Pranjal Full Stack resume in external tab...'];
   }
 
 
