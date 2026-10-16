@@ -79,5 +79,5 @@ npm run preview
 - **Developer**: Pranjal Singh (IIIT Ranchi ECE '28)
 - **Email**: [pranjalsingh9091@gmail.com](mailto:pranjalsingh9091@gmail.com)
 - **GitHub**: [@pranjal9091](https://github.com/pranjal9091)
-- **LinkedIn**: [linkedin.com/in/pranjal-singh](https://linkedin.com/in/pranjal-singh)
+- **LinkedIn**: [linkedin.com/in/pranjal-singh-b9b456325](https://www.linkedin.com/in/pranjal-singh-b9b456325/)
 - **Phone**: +91-81712 07094

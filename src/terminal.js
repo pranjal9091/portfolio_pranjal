@@ -575,7 +575,7 @@ export class TerminalCLI {
       '• Email:    <a class="term-link" href="mailto:pranjalsingh9091@gmail.com">pranjalsingh9091@gmail.com</a>',
       '• Phone:    <span class="term-success">+91-81712 07094</span>',
       '• GitHub:   <a class="term-link" href="https://github.com/pranjal9091" target="_blank">github.com/pranjal9091</a>',
-      '• LinkedIn: <a class="term-link" href="https://linkedin.com/in/pranjal-singh" target="_blank">linkedin.com/in/pranjal-singh</a>',
+      '• LinkedIn: <a class="term-link" href="https://www.linkedin.com/in/pranjal-singh-b9b456325/" target="_blank">linkedin.com/in/pranjal-singh-b9b456325</a>',
     ];
   }
 
@@ -602,7 +602,7 @@ export class TerminalCLI {
 
   cmdLinkedIn() {
     sound.playChime();
-    const url = 'https://linkedin.com/in/pranjal-singh';
+    const url = 'https://www.linkedin.com/in/pranjal-singh-b9b456325/';
     window.open(url, '_blank');
     return [
       `<div class="term-success">✓ Launching LinkedIn profile in new tab:</div>`,
@@ -951,7 +951,7 @@ export class TerminalCLI {
       p2p: 'https://p2-p-drop.vercel.app/',
       chronolock: 'https://chronolock-eight.vercel.app/',
       github: 'https://github.com/pranjal9091',
-      linkedin: 'https://linkedin.com/in/pranjal-singh',
+      linkedin: 'https://www.linkedin.com/in/pranjal-singh-b9b456325/',
     };
 
     if (urls[target]) {
